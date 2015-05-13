@@ -1,8 +1,8 @@
 <%= form_for(@medico) do |f| %>
   <% if @medico.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@medico.errors.count, "error") %> prohibited this medico from being saved:</h2>
-
+      <h2><%= pluralize(@medico.errors.count, "error") %> 
+        prohibited this medico from being saved:</h2>
       <ul>
       <% @medico.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -32,6 +32,10 @@
     <%= f.text_field :email %>
   </div>
   <div class="field">
+    <%= f.label :email_confirmation %><br>
+    <%= f.text_field :email_confirmation %>
+  </div>
+  <div class="field">
     <%= f.label :telefone %><br>
     <%= f.text_field :telefone %>
   </div>
@@ -43,3 +47,5 @@
     <%= f.submit %>
   </div>
 <% end %>
+
+
