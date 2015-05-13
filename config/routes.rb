@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :estados
   resources :creditos
   resources :medicos
+  resources :usuario
   resources :especialidades
   root 'principal#index'
   # The priority is based upon order of creation: first created -> highest priority.
