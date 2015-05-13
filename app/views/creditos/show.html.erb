@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Medico:</strong>
+  <%= @credito.medico_id %>
+</p>
+
+<p>
+  <strong>Data emissao:</strong>
+  <%= @credito.data_emissao %>
+</p>
+
+<p>
+  <strong>Credito:</strong>
+  <%= @credito.credito %>
+</p>
+
+<p>
+  <strong>Saldo:</strong>
+  <%= @credito.saldo %>
+</p>
+
+<%= link_to 'Edit', edit_credito_path(@credito) %> |
+<%= link_to 'Back', creditos_path %>

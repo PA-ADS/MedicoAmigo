@@ -1,0 +1,33 @@
+<%= form_for(@credito) do |f| %>
+  <% if @credito.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@credito.errors.count, "error") %> prohibited this credito from being saved:</h2>
+
+      <ul>
+      <% @credito.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :medico_id %><br>
+    <%= f.number_field :medico_id %>
+  </div>
+  <div class="field">
+    <%= f.label :data_emissao %><br>
+    <%= f.date_select :data_emissao %>
+  </div>
+  <div class="field">
+    <%= f.label :credito %><br>
+    <%= f.number_field :credito %>
+  </div>
+  <div class="field">
+    <%= f.label :saldo %><br>
+    <%= f.number_field :saldo %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

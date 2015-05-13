@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nome:</strong>
+  <%= @medico.nome %>
+</p>
+
+<p>
+  <strong>Cpf:</strong>
+  <%= @medico.cpf %>
+</p>
+
+<p>
+  <strong>Crm:</strong>
+  <%= @medico.crm %>
+</p>
+
+<p>
+  <strong>Crm uf:</strong>
+  <%= @medico.crm_uf %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @medico.email %>
+</p>
+
+<p>
+  <strong>Telefone:</strong>
+  <%= @medico.telefone %>
+</p>
+
+<p>
+  <strong>Especialidade:</strong>
+  <%= @medico.especialidade_id %>
+</p>
+
+<%= link_to 'Edit', edit_medico_path(@medico) %> |
+<%= link_to 'Back', medicos_path %>
