@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :estados
   resources :creditos
   resources :medicos
   resources :especialidades

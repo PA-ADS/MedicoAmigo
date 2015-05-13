@@ -25,7 +25,7 @@
   </div>
   <div class="field">
     <%= f.label :crm_uf %><br>
-    <%= f.text_field :crm_uf %>
+    <%= collection_select(:medico, :crm_uf, Estado.all, :uf, :uf, prompt: true) %>
   </div>
   <div class="field">
     <%= f.label :email %><br>
