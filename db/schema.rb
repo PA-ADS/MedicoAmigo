@@ -11,11 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-#<<<<<<< HEAD
-#ActiveRecord::Schema.define(version: 20150513022049) do
-#=======
 ActiveRecord::Schema.define(version: 20150513024010) do
-#>>>>>>> 05afb78ba87f7c9e46cc377fd07e660ba35829a1
 
   create_table "creditos", force: :cascade do |t|
     t.integer  "medico_id",    limit: 4

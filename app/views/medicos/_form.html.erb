@@ -28,6 +28,14 @@
     <%= collection_select(:medico, :crm_uf, Estado.all, :uf, :uf, prompt: true) %>
   </div>
   <div class="field">
+    <%= f.label :telefone %><br>
+    <%= f.text_field :telefone %>
+  </div>
+  <div class="field">
+    <%= f.label :especialidade_id %><br>
+    <%= collection_select(:medico, :especialidade_id, Especialidade.all, :id, :descricao, prompt: true) %>
+  </div>
+  <div class="field">
     <%= f.label :email %><br>
     <%= f.text_field :email %>
   </div>
@@ -36,14 +44,10 @@
     <%= f.text_field :email_confirmation %>
   </div>
   <div class="field">
-    <%= f.label :telefone %><br>
-    <%= f.text_field :telefone %>
+    <%= f.usuario.label :password %><br>
+    <%= f.usuario.text_field :password %>
   </div>
-  <div class="field">
-    <%= f.label :especialidade_id %><br>
-    <%= collection_select(:medico, :especialidade_id, Especialidade.all, :id, :descricao, prompt: true) %>
-  </div>
-  <div class="actions">
+   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
