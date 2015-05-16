@@ -35,6 +35,7 @@
     <%= f.label :especialidade_id %><br>
     <%= collection_select(:medico, :especialidade_id, Especialidade.all, :id, :descricao, prompt: true) %>
   </div>
+  <% if @medico.new_record? %>
   <%= f.fields_for :usuario do |usuario_form| %>
     <div class="field">
       <%= usuario_form.label :email %><br>
@@ -44,6 +45,7 @@
       <%= usuario_form.label :password %><br>
       <%= usuario_form.password_field :password %>
     </div>
+  <% end %>
   <% end %>
   <div class="actions">
     <%= f.submit %>
