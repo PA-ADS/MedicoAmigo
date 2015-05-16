@@ -71,6 +71,6 @@ class MedicosController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def medico_params
       params.require(:medico).permit(:nome, :cpf, :crm, :crm_uf, :email, :telefone, 
-        :especialidade_id, :usuario_attributes => [:email, :password, :tipo])
+        :especialidade_id, :usuario_attributes => [:email, :email_confirmation, :password, :tipo])
     end
 end
