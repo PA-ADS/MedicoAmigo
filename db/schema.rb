@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150513024010) do
+ActiveRecord::Schema.define(version: 20150516121417) do
 
   create_table "creditos", force: :cascade do |t|
     t.integer  "medico_id",    limit: 4
@@ -40,12 +40,14 @@ ActiveRecord::Schema.define(version: 20150513024010) do
     t.string   "cpf",              limit: 11
     t.string   "crm",              limit: 10
     t.string   "crm_uf",           limit: 2
-    t.string   "email",            limit: 60
     t.string   "telefone",         limit: 11
     t.integer  "especialidade_id", limit: 4
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
+    t.integer  "usuario_id",       limit: 4
   end
+
+  add_index "medicos", ["usuario_id"], name: "index_medicos_on_usuario_id", unique: true, using: :btree
 
   create_table "usuarios", force: :cascade do |t|
     t.string   "email",      limit: 60

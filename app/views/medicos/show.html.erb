@@ -21,19 +21,20 @@
 </p>
 
 <p>
-  <strong>Email:</strong>
-  <%= @medico.email %>
-</p>
-
-<p>
   <strong>Telefone:</strong>
   <%= @medico.telefone %>
 </p>
 
 <p>
   <strong>Especialidade:</strong>
-  <%= @medico.especialidade_id %>
+  <%= @medico.especialidade.descricao %>
 </p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @medico.usuario.email %>
+</p>
+
 
 <%= link_to 'Edit', edit_medico_path(@medico) %> |
 <%= link_to 'Back', medicos_path %>

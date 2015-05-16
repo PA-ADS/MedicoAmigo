@@ -3,24 +3,24 @@ class Medico < ActiveRecord::Base
 	EMAIL_REGEXP = /\A[^@]+@([^@\.]+\.)+[^@\.]+\z/
 	
 	## Obriga preenchimento dos campos
-	validates_presence_of :nome, :cpf, :crm, :crm_uf, :email, :especialidade_id
-	validates_confirmation_of :email
+	validates_presence_of :nome, :cpf, :crm, :crm_uf, :especialidade_id
+	#validates_confirmation_of :email
 	
 	## Relacionamento das tabelas
 	belongs_to 	:especialidade
-	belongs_to	:usuario, :foreign_key => "email"
-	has_one 	:estado		
+	belongs_to	:usuario, :dependent => :destroy
+	has_one 	:estado
 	has_many 	:creditos
 
 	accepts_nested_attributes_for :usuario
 
 	## valida formato do email
-	validate :email_format
+	#validate :email_format
 	
-	private
+	#private
 	## Trata erro de digitação do email
-	def email_format
-		errors.add(:email, :invalid) unless email.match(EMAIL_REGEXP)
-	end
+	#def email_format
+	#	errors.add(:email, :invalid) unless email.match(EMAIL_REGEXP)
+	#end
 
 end
