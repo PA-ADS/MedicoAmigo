@@ -44,8 +44,10 @@
     <%= f.text_field :email_confirmation %>
   </div>
   <div class="field">
-    <%= f.usuario.label :password %><br>
-    <%= f.usuario.text_field :password %>
+    <%= f.fields_for :usuario do |usuario_form| %>
+      <%= usuario_form.label :password %><br>
+      <%= usuario_form.password_field :password %>
+    <% end %>
   </div>
    <div class="actions">
     <%= f.submit %>

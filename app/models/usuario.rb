@@ -1,3 +1,3 @@
 class Usuario < ActiveRecord::Base
-	has_one :medico, :primary_key => 'email'
+	has_one :medico, :primary_key => "email"
 end

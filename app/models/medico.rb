@@ -8,10 +8,11 @@ class Medico < ActiveRecord::Base
 	
 	## Relacionamento das tabelas
 	belongs_to 	:especialidade
-	belongs_to	:usuario ,:class_name =>"Usuario", :foreign_key => "email" 
+	belongs_to	:usuario, :foreign_key => "email"
 	has_one 	:estado		
 	has_many 	:creditos
-	
+
+	accepts_nested_attributes_for :usuario
 
 	## valida formato do email
 	validate :email_format

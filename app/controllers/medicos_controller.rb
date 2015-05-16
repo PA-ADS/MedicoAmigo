@@ -15,6 +15,7 @@ class MedicosController < ApplicationController
   # GET /medicos/new
   def new
     @medico = Medico.new
+    @medico.build_usuario
   end
 
   # GET /medicos/1/edit
@@ -69,6 +70,7 @@ class MedicosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def medico_params
-      params.require(:medico).permit(:nome, :cpf, :crm, :crm_uf, :email, :telefone, :especialidade_id)
+      params.require(:medico).permit(:nome, :cpf, :crm, :crm_uf, :email, :telefone, 
+        :especialidade_id, :usuario_attributes => [:password])
     end
 end
