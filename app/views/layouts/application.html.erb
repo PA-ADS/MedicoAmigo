@@ -1,14 +1,29 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>MedicoAmigo</title>
+  <title>Médico Amigo</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
-
+	<header>
+		<h1>Médico Amigo</h1>
+		<nav>
+			<ul>
+				<li><%= link_to "Solicitações", "" %></li>
+				<li><%= link_to "Créditos", "" %></li>
+				<li><%= link_to "Clínicas", "" %></li>
+				<li><%= link_to "Fazer Login", "" %>
+				<li><%= link_to "Cadastre-se", new_medico_path %></li>
+				<li><%= link_to "Sair", "" %>
+			</ul>
+		</nav>
+	</header>
+	<main>
+		<%= yield %>
+	</main>
+	<footer>
+	</footer>
 </body>
 </html>
