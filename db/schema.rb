@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150516121417) do
+ActiveRecord::Schema.define(version: 20150517004239) do
 
   create_table "creditos", force: :cascade do |t|
     t.integer  "medico_id",    limit: 4
@@ -50,11 +50,12 @@ ActiveRecord::Schema.define(version: 20150516121417) do
   add_index "medicos", ["usuario_id"], name: "index_medicos_on_usuario_id", unique: true, using: :btree
 
   create_table "usuarios", force: :cascade do |t|
-    t.string   "email",      limit: 60
-    t.string   "password",   limit: 12
-    t.string   "tipo",       limit: 1
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
+    t.string   "email",         limit: 60
+    t.string   "tipo",          limit: 1
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.string   "password_hash", limit: 255
+    t.string   "password_salt", limit: 255
   end
 
   add_index "usuarios", ["email"], name: "index_usuarios_on_email", unique: true, using: :btree
