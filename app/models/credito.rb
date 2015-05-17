@@ -1,3 +1,3 @@
 class Credito < ActiveRecord::Base
-	belongs_to :medico
+	belongs_to :medico, :dependent => :destroy
 end

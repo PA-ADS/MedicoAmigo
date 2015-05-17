@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Clinicas</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Medico</th>
+      <th>Nome</th>
+      <th>Telefone</th>
+      <th>Endereco</th>
+      <th>End numero</th>
+      <th>End complemento</th>
+      <th>Bairro</th>
+      <th>Cidade</th>
+      <th>Uf</th>
+      <th>Cep</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @clinicas.each do |clinica| %>
+      <tr>
+        <td><%= clinica.medico_id %></td>
+        <td><%= clinica.nome %></td>
+        <td><%= clinica.telefone %></td>
+        <td><%= clinica.endereco %></td>
+        <td><%= clinica.end_numero %></td>
+        <td><%= clinica.end_complemento %></td>
+        <td><%= clinica.bairro %></td>
+        <td><%= clinica.cidade %></td>
+        <td><%= clinica.uf %></td>
+        <td><%= clinica.cep %></td>
+        <td><%= link_to 'Show', clinica %></td>
+        <td><%= link_to 'Edit', edit_clinica_path(clinica) %></td>
+        <td><%= link_to 'Destroy', clinica, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Clinica', new_clinica_path %>

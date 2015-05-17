@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Medico:</strong>
+  <%= @clinica.medico_id %>
+</p>
+
+<p>
+  <strong>Nome:</strong>
+  <%= @clinica.nome %>
+</p>
+
+<p>
+  <strong>Telefone:</strong>
+  <%= @clinica.telefone %>
+</p>
+
+<p>
+  <strong>Endereco:</strong>
+  <%= @clinica.endereco %>
+</p>
+
+<p>
+  <strong>End numero:</strong>
+  <%= @clinica.end_numero %>
+</p>
+
+<p>
+  <strong>End complemento:</strong>
+  <%= @clinica.end_complemento %>
+</p>
+
+<p>
+  <strong>Bairro:</strong>
+  <%= @clinica.bairro %>
+</p>
+
+<p>
+  <strong>Cidade:</strong>
+  <%= @clinica.cidade %>
+</p>
+
+<p>
+  <strong>Uf:</strong>
+  <%= @clinica.uf %>
+</p>
+
+<p>
+  <strong>Cep:</strong>
+  <%= @clinica.cep %>
+</p>
+
+<%= link_to 'Edit', edit_clinica_path(@clinica) %> |
+<%= link_to 'Back', clinicas_path %>

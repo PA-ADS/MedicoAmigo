@@ -11,7 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150517004239) do
+ActiveRecord::Schema.define(version: 20150517155008) do
+
+  create_table "clinicas", force: :cascade do |t|
+    t.integer  "medico_id",       limit: 4
+    t.string   "nome",            limit: 45
+    t.string   "telefone",        limit: 11
+    t.string   "endereco",        limit: 60
+    t.string   "end_numero",      limit: 6
+    t.string   "end_complemento", limit: 15
+    t.string   "bairro",          limit: 45
+    t.string   "cidade",          limit: 45
+    t.string   "uf",              limit: 2
+    t.string   "cep",             limit: 8
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
 
   create_table "creditos", force: :cascade do |t|
     t.integer  "medico_id",    limit: 4
