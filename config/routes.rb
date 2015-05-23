@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'municipios/index'
+  get 'municipios/estado_municipio', as: 'estado_municipio'
+
   resources :clinicas
   resources :estados
   resources :creditos

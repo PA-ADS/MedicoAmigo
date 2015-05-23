@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150517155008) do
+ActiveRecord::Schema.define(version: 20150517212023) do
 
   create_table "clinicas", force: :cascade do |t|
     t.integer  "medico_id",       limit: 4
@@ -63,6 +63,14 @@ ActiveRecord::Schema.define(version: 20150517155008) do
   end
 
   add_index "medicos", ["usuario_id"], name: "index_medicos_on_usuario_id", unique: true, using: :btree
+
+  create_table "municipios", force: :cascade do |t|
+    t.string   "cod_ibge",   limit: 5
+    t.string   "nome",       limit: 35
+    t.string   "uf",         limit: 2
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+  end
 
   create_table "usuarios", force: :cascade do |t|
     t.string   "email",         limit: 60
