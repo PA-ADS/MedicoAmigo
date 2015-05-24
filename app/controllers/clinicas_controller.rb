@@ -4,7 +4,7 @@ class ClinicasController < ApplicationController
   # GET /clinicas
   # GET /clinicas.json
   def index
-    @clinicas = Clinica.all
+    @clinicas = Clinica.where(:medico_id => usuario_corrente.medico.id)
   end
 
   # GET /clinicas/1
@@ -25,6 +25,7 @@ class ClinicasController < ApplicationController
   # POST /clinicas.json
   def create
     @clinica = Clinica.new(clinica_params)
+    @clinica.medico_id = usuario_corrente.medico.id
 
     respond_to do |format|
       if @clinica.save

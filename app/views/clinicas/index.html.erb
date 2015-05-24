@@ -5,7 +5,6 @@
 <table>
   <thead>
     <tr>
-      <th>Medico</th>
       <th>Nome</th>
       <th>Telefone</th>
       <th>Endereco</th>
@@ -22,7 +21,6 @@
   <tbody>
     <% @clinicas.each do |clinica| %>
       <tr>
-        <td><%= clinica.medico_id %></td>
         <td><%= clinica.nome %></td>
         <td><%= clinica.telefone %></td>
         <td><%= clinica.endereco %></td>

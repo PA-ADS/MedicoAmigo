@@ -12,10 +12,6 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :medico_id %><br>
-    <%= collection_select(:clinica, :medico_id, Medico.all, :id, :id, prompt: true) %>
-  </div>
-  <div class="field">
     <%= f.label :nome %><br>
     <%= f.text_field :nome %>
   </div>

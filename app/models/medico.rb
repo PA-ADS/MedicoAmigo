@@ -11,8 +11,8 @@ class Medico < ActiveRecord::Base
 	belongs_to 	:especialidade
 	belongs_to	:usuario, :dependent => :destroy
 	has_one 	:estado
-	has_many 	:creditos
-	has_many	:clinicas
+	has_many 	:creditos, :dependent => :destroy
+	has_many	:clinicas, :dependent => :destroy
 
 	accepts_nested_attributes_for :usuario
 

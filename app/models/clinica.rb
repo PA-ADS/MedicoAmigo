@@ -1,7 +1,7 @@
 class Clinica < ActiveRecord::Base
 	
 	# Relacionamento modelos
-	belongs_to :medico, :dependent => :destroy
+	belongs_to :medico
 	belongs_to :municipio, :foreign_key => "cidade"
 
 	# Validações modelo

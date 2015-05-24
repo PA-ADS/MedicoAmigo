@@ -1,4 +1,5 @@
 class MedicosController < ApplicationController
+  skip_before_filter :autorizar, :only => [:new, :create]
   before_action :set_medico, only: [:show, :edit, :update, :destroy]
 
   # GET /medicos
