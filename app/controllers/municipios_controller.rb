@@ -10,7 +10,7 @@ class MunicipiosController < ApplicationController
 
   def estado_municipio
   	@municipios = Municipio.where("uf = ?", params[:uf])
-  	respond_to do |format|
+    respond_to do |format|
   		format.js
   	end
   end
