@@ -18,11 +18,20 @@ class Usuario < ActiveRecord::Base
 
 	# Funções a serem executadas antes de salvar
 	before_save :cript_senha
-	
+
 	private
 	# Trata erro de digitação do email
 	def email_format
 		errors.add(:email, :invalid) unless email.match(EMAIL_REGEXP)
+	end
+
+	def self.autenticar(email, password)
+		usuario = find_by_email(email)
+		if usuario && usuario.password_hash == BCrypt::Engine.hash_secret(password, usuario.password_salt)
+			usuario
+		else
+			nil
+		end
 	end
 
 	def cript_senha

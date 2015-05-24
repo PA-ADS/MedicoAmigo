@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'log_in' => 'sessions#new', :as => 'log_in'
+  get 'log_out' => 'sessions#destroy', :as => 'log_out'
+
   get 'municipios/index'
   get 'municipios/estado_municipio', as: 'estado_municipio'
 
@@ -8,12 +11,14 @@ Rails.application.routes.draw do
   resources :medicos
   resources :usuario
   resources :especialidades
-  root 'principal#index'
+  resources :sessions
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
+  root 'principal#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

@@ -14,13 +14,20 @@
 				<li><%= link_to "Solicitações", "" %></li>
 				<li><%= link_to "Créditos", creditos_path %></li>
 				<li><%= link_to "Clínicas", clinicas_path %></li>
-				<li><%= link_to "Fazer Login", "" %>
-				<li><%= link_to "Cadastre-se", new_medico_path %></li>
-				<li><%= link_to "Sair", "" %>
+				<% if !usuario_corrente %>
+					<li><%= link_to "Fazer Login", log_in_path %></li>
+					<li><%= link_to "Cadastre-se", new_medico_path %></li>
+				<% else %>
+					<li><%= usuario_corrente.email %></li>
+					<li><%= link_to "Sair", log_out_path %></li>
+				<% end %>
 			</ul>
 		</nav>
 	</header>
 	<main>
+		<% flash.each do |name, msg| %>
+			<%= content_tag :div, msg, :id => "flash_#{name}" %>
+		<% end %>
 		<%= yield %>
 	</main>
 	<footer>
