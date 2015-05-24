@@ -7,8 +7,8 @@ class Usuario < ActiveRecord::Base
 	EMAIL_REGEXP = /\A[^@]+@([^@\.]+\.)+[^@\.]+\z/
 
 	# Validações Modelo
-	validates_presence_of :email, :email_confirmation, :password
-	validates_confirmation_of :email
+	validates_presence_of :email, :email_confirmation, :password, :password_confirmation
+	validates_confirmation_of :email, :password
 	validates :email, :uniqueness => true
 	# Valida formato do email
 	validate :email_format
