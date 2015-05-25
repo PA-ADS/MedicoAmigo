@@ -2,12 +2,12 @@
 
 one:
   medico_id: 1
-  data_emissao: 2015-05-12
-  credito: 1
+  data_emissao: 2015-05-25
+  quantidade: 1
   saldo: 1
 
 two:
   medico_id: 1
-  data_emissao: 2015-05-12
-  credito: 1
+  data_emissao: 2015-05-25
+  quantidade: 1
   saldo: 1

@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class CreditoTest < ActiveSupport::TestCase
+class AgendaTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

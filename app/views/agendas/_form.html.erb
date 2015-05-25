@@ -1,0 +1,26 @@
+<%= form_for(@agenda) do |f| %>
+  <% if @agenda.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@agenda.errors.count, "error") %> prohibited this agenda from being saved:</h2>
+
+      <ul>
+      <% @agenda.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :clinica_id %><br>
+    <%= collection_select(:agenda, :clinica_id, Clinica.clinicas_medico(usuario_corrente.medico.id), 
+      :id, :nome, prompt: true) %>
+  </div>
+  <div class="field">
+    <%= f.label :quantidade %><br>
+    <%= f.number_field :quantidade %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

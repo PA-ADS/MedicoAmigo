@@ -13,6 +13,7 @@ class Medico < ActiveRecord::Base
 	has_one 	:estado
 	has_many 	:creditos, :dependent => :destroy
 	has_many	:clinicas, :dependent => :destroy
+	has_many	:agendas, :dependent => :destroy
 
 	accepts_nested_attributes_for :usuario
 
