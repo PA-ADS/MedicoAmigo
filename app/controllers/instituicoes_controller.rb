@@ -26,7 +26,9 @@ class InstituicoesController < ApplicationController
   # POST /instituicoes.json
   def create
     @instituicao = Instituicao.new(instituicao_params)
-
+    @instituicao.usuario.tipo = "I"
+    @instituicao.status = "A"
+    
     respond_to do |format|
       if @instituicao.save
         format.html { redirect_to @instituicao, notice: 'Instituicao was successfully created.' }

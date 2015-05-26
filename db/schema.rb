@@ -61,21 +61,21 @@ ActiveRecord::Schema.define(version: 20150526002649) do
   end
 
   create_table "instituicoes", force: :cascade do |t|
-    t.string   "nome",        limit: 255
-    t.string   "cnpj",        limit: 255
-    t.string   "responsavel", limit: 255
-    t.string   "endereco",    limit: 255
-    t.string   "end_numero",  limit: 255
-    t.string   "complemento", limit: 255
-    t.string   "bairro",      limit: 255
+    t.string   "nome",        limit: 60
+    t.string   "cnpj",        limit: 14
+    t.string   "responsavel", limit: 60
+    t.string   "endereco",    limit: 60
+    t.string   "end_numero",  limit: 6
+    t.string   "complemento", limit: 15
+    t.string   "bairro",      limit: 45
     t.integer  "cidade",      limit: 4
-    t.string   "uf",          limit: 255
-    t.string   "cep",         limit: 255
-    t.string   "telefone",    limit: 255
-    t.string   "status",      limit: 255
+    t.string   "uf",          limit: 2
+    t.string   "cep",         limit: 8
+    t.string   "telefone",    limit: 11
+    t.string   "status",      limit: 1
     t.integer  "usuario_id",  limit: 4
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "medicos", force: :cascade do |t|

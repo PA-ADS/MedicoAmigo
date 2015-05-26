@@ -41,12 +41,11 @@
   </div>
    <div class="field">
     <%= f.label :uf %><br>
-    <%= collection_select(:clinica, :uf, Estado.all, :uf, :nome, prompt: true) %>
+    <%= collection_select(:instituicao, :uf, Estado.all, :uf, :nome, prompt: true) %>
   </div>
   <div class="field">
     <%= f.label :cidade %><br>
-    <%= collection_select(:clinica, :cidade, Municipio.all, :id, :nome, 
-    {prompt: true}) %>
+    <%= collection_select(:instituicao, :cidade, Municipio.all, :id, :nome, {prompt: true}) %>
   </div>
   <div class="field">
     <%= f.label :cep %><br>
@@ -55,10 +54,6 @@
   <div class="field">
     <%= f.label :telefone %><br>
     <%= f.text_field :telefone %>
-  </div>
-  <div class="field">
-    <%= f.label :status %><br>
-    <%= f.text_field :status %>
   </div>
   <% if @instituicao.new_record? %>
   <%= f.fields_for :usuario do |usuario_form| %>
