@@ -1,0 +1,51 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Instituicoes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Cnpj</th>
+      <th>Responsavel</th>
+      <th>Endereco</th>
+      <th>End numero</th>
+      <th>Complemento</th>
+      <th>Bairro</th>
+      <th>Cidade</th>
+      <th>Uf</th>
+      <th>Cep</th>
+      <th>Telefone</th>
+      <th>Status</th>
+      <th>Usuario</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @instituicoes.each do |instituicao| %>
+      <tr>
+        <td><%= instituicao.nome %></td>
+        <td><%= instituicao.cnpj %></td>
+        <td><%= instituicao.responsavel %></td>
+        <td><%= instituicao.endereco %></td>
+        <td><%= instituicao.end_numero %></td>
+        <td><%= instituicao.complemento %></td>
+        <td><%= instituicao.bairro %></td>
+        <td><%= instituicao.cidade %></td>
+        <td><%= instituicao.uf %></td>
+        <td><%= instituicao.cep %></td>
+        <td><%= instituicao.telefone %></td>
+        <td><%= instituicao.status %></td>
+        <td><%= instituicao.usuario_id %></td>
+        <td><%= link_to 'Show', instituicao %></td>
+        <td><%= link_to 'Edit', edit_instituicao_path(instituicao) %></td>
+        <td><%= link_to 'Destroy', instituicao, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Instituicao', new_instituicao_path %>

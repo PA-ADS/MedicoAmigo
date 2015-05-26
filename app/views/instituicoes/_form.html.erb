@@ -1,0 +1,86 @@
+<%= form_for(@instituicao) do |f| %>
+  <% if @instituicao.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@instituicao.errors.count, "error") %> prohibited this instituicao from being saved:</h2>
+
+      <ul>
+      <% @instituicao.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :nome %><br>
+    <%= f.text_field :nome %>
+  </div>
+  <div class="field">
+    <%= f.label :cnpj %><br>
+    <%= f.text_field :cnpj %>
+  </div>
+  <div class="field">
+    <%= f.label :responsavel %><br>
+    <%= f.text_field :responsavel %>
+  </div>
+  <div class="field">
+    <%= f.label :endereco %><br>
+    <%= f.text_field :endereco %>
+  </div>
+  <div class="field">
+    <%= f.label :end_numero %><br>
+    <%= f.text_field :end_numero %>
+  </div>
+  <div class="field">
+    <%= f.label :complemento %><br>
+    <%= f.text_field :complemento %>
+  </div>
+  <div class="field">
+    <%= f.label :bairro %><br>
+    <%= f.text_field :bairro %>
+  </div>
+   <div class="field">
+    <%= f.label :uf %><br>
+    <%= collection_select(:clinica, :uf, Estado.all, :uf, :nome, prompt: true) %>
+  </div>
+  <div class="field">
+    <%= f.label :cidade %><br>
+    <%= collection_select(:clinica, :cidade, Municipio.all, :id, :nome, 
+    {prompt: true}) %>
+  </div>
+  <div class="field">
+    <%= f.label :cep %><br>
+    <%= f.text_field :cep %>
+  </div>
+  <div class="field">
+    <%= f.label :telefone %><br>
+    <%= f.text_field :telefone %>
+  </div>
+  <div class="field">
+    <%= f.label :status %><br>
+    <%= f.text_field :status %>
+  </div>
+  <% if @instituicao.new_record? %>
+  <%= f.fields_for :usuario do |usuario_form| %>
+    <div class="field">
+      <%= usuario_form.label :email %><br>
+      <%= usuario_form.text_field :email %>
+    </div>
+    <div class="field">
+      <%= usuario_form.label :email_confirmation %><br>
+      <%= usuario_form.text_field :email_confirmation %>
+    </div>
+    <div class="field">
+      <%= usuario_form.label :password %><br>
+      <%= usuario_form.password_field :password %>
+    </div>
+    <div class="field">
+      <%= usuario_form.label :password_confirmation %><br>
+      <%= usuario_form.password_field :password_confirmation %>
+    </div>
+  <% end %>
+  <% end %>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
