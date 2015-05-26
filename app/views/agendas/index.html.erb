@@ -1,0 +1,46 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Agendas</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Clinica</th>
+      <th>Data emissao</th>
+      <th>Quantidade</th>
+      <th>Saldo</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @agendas.each do |agenda| %>
+      <tr>
+        <td><%= agenda.clinica.nome %></td>
+        <td><%= agenda.data_emissao %></td>
+        <td><%= agenda.quantidade %></td>
+        <td><%= agenda.saldo %></td>
+        <td><%= link_to 'Show', agenda %></td>
+        <td><%= link_to 'Edit', edit_agenda_path(agenda) %></td>
+        <td><%= link_to 'Destroy', agenda, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+    <!-- 
+      <tr>
+        <%= form_for(@agenda1 = Agenda.new) do |f| %>
+          <td><%= collection_select(:agenda, :clinica_id, Clinica.clinicas_medico(usuario_corrente.medico.id), :id, :nome, prompt: true) %></td>
+          <td><%= f.text_field :data_emissao %></td>
+          <td><%= f.number_field :quantidade %></td>
+          <td><%= f.number_field :saldo %></td>
+          <td><%= f.submit %></td>
+        <% end %>
+      </tr>
+    -->
+  </tbody>
+</table>
+
+<br>
+<!--
+<%= button_tag('Adicionar', :type => 'button', :name => 'agenda_adicionar', :id => 'agenda_adicionar') %>
+-->
+<%= link_to 'New Agenda', new_agenda_path %>

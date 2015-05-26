@@ -1,18 +1,18 @@
 Rails.application.routes.draw do
-
-  resources :instituicoes
-   get 'log_in' => 'sessions#new', :as => 'log_in'
+ 
+  get 'log_in' => 'sessions#new', :as => 'log_in'
   get 'log_out' => 'sessions#destroy', :as => 'log_out'
 
   get 'municipios/index'
   get 'municipios/estado_municipio', as: 'estado_municipio'
 
+  resources :agendas
   resources :clinicas
   resources :estados
-  resources :creditos
   resources :medicos
   resources :usuario
   resources :especialidades
+  resources :instituicoes
   resources :sessions
 
   # The priority is based upon order of creation: first created -> highest priority.

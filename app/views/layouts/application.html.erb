@@ -11,13 +11,13 @@
 		<h1>Médico Amigo</h1>
 		<nav>
 			<ul>
-				<li><%= link_to "Solicitações", "" %></li>
-				<li><%= link_to "Créditos", creditos_path %></li>
-				<li><%= link_to "Clínicas", clinicas_path %></li>
 				<% if !usuario_corrente %>
 					<li><%= link_to "Fazer Login", log_in_path %></li>
 					<li><%= link_to "Cadastre-se", new_medico_path %></li>
 				<% else %>
+					<li><%= link_to "Solicitações", "" %></li>
+					<li><%= link_to "Agendas", agendas_path %></li>
+					<li><%= link_to "Clínicas", clinicas_path %></li>
 					<li><%= usuario_corrente.email %></li>
 					<li><%= link_to "Sair", log_out_path %></li>
 				<% end %>

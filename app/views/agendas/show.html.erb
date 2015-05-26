@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Medico:</strong>
+  <%= @agenda.medico_id %>
+</p>
+
+<p>
+  <strong>Data emissao:</strong>
+  <%= @agenda.data_emissao %>
+</p>
+
+<p>
+  <strong>Quantidade:</strong>
+  <%= @agenda.quantidade %>
+</p>
+
+<p>
+  <strong>Saldo:</strong>
+  <%= @agenda.saldo %>
+</p>
+
+<%= link_to 'Edit', edit_agenda_path(@agenda) %> |
+<%= link_to 'Back', agendas_path %>
