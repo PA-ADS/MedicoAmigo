@@ -1,36 +1,32 @@
 # Place all the behaviors and hooks related to the matching controller here.
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
+
+municipio_por_uf = ($element_uf, $element_cidade) ->
+  console.log($element_uf)
+  console.log($element_cidade)
+
+  if $($element_uf).val() != ''
+    $($element_cidade).prop("disabled", false)
+  else
+    $($element_cidade).prop("disabled", true)
+  
+  $.ajax '/municipios/estado_municipio',
+    type: 'GET'
+    dataType: 'script'
+    data: {
+      uf: $element_uf.find("option:selected").val()
+    }
+    error: (jqXHR, textStatus, errorThrown) ->
+      console.log("AJAX Error: #{textStatus}")
+
 $ ->
-  $(document).on 'change', '#clinica_uf', (evt) ->
-    
-    if $("#clinica_uf").val() != ''
-      $('#clinica_cidade').prop("disabled", false)
-    else
-      $('#clinica_cidade').prop("disabled", true)
-
-    $.ajax '/municipios/estado_municipio',
-      type: 'GET'
-      dataType: 'script'
-      data: {
-        uf: $("#clinica_uf option:selected").val()
-      }
-      error: (jqXHR, textStatus, errorThrown) ->
-        console.log("AJAX Error: #{textStatus}")
+  $(document).on 'change', '#uf_ajax', (evt) ->
+    municipio_por_uf $('#uf_ajax'), $('#cidade_ajax')
 
 $ ->
-  $(document).on 'change', '#instituicao_uf', (evt) ->
-    
-    if $("#instituicao_uf").val() != ''
-      $('#instituicao_cidade').prop("disabled", false)
+  $(document).on "page:change", ->
+    if $("#uf_ajax").val() != ""
+      $("#cidade_ajax").prop("disabled", false)
     else
-      $('#instituicao_cidade').prop("disabled", true)
-
-    $.ajax '/municipios/estado_municipio',
-      type: 'GET'
-      dataType: 'script'
-      data: {
-        uf: $("#instituicao_uf option:selected").val()
-      }
-      error: (jqXHR, textStatus, errorThrown) ->
-        console.log("AJAX Error: #{textStatus}")
+      $("#cidade_ajax").prop("disabled", true)

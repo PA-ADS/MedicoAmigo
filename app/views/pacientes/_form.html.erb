@@ -1,10 +1,10 @@
-<%= form_for(@clinica) do |f| %>
-  <% if @clinica.errors.any? %>
+<%= form_for(@paciente) do |f| %>
+  <% if @paciente.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@clinica.errors.count, "error") %> prohibited this clinica from being saved:</h2>
+      <h2><%= pluralize(@paciente.errors.count, "error") %> prohibited this paciente from being saved:</h2>
 
       <ul>
-      <% @clinica.errors.full_messages.each do |message| %>
+      <% @paciente.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
@@ -16,8 +16,8 @@
     <%= f.text_field :nome %>
   </div>
   <div class="field">
-    <%= f.label :telefone %><br>
-    <%= f.text_field :telefone %>
+    <%= f.label :cpf %><br>
+    <%= f.text_field :cpf %>
   </div>
   <div class="field">
     <%= f.label :endereco %><br>
@@ -28,8 +28,8 @@
     <%= f.text_field :end_numero %>
   </div>
   <div class="field">
-    <%= f.label :end_complemento %><br>
-    <%= f.text_field :end_complemento %>
+    <%= f.label :complemento %><br>
+    <%= f.text_field :complemento %>
   </div>
   <div class="field">
     <%= f.label :bairro %><br>
@@ -37,17 +37,21 @@
   </div>
   <div class="field">
     <%= f.label :uf %><br>
-    <%= collection_select(:clinica, :uf, Estado.all, :uf, :nome, 
+    <%= collection_select(:paciente, :uf, Estado.all, :uf, :nome, 
       {prompt: true}, {:id => "uf_ajax"}) %>
   </div>
   <div class="field">
     <%= f.label :cidade %><br>
-    <%= collection_select(:clinica, :cidade, {}, :id, :nome, 
+    <%= collection_select(:paciente, :cidade, {}, :id, :nome, 
       {prompt: true}, {:id => "cidade_ajax"}) %>
   </div>
   <div class="field">
     <%= f.label :cep %><br>
     <%= f.text_field :cep %>
+  </div>
+  <div class="field">
+    <%= f.label :telefone %><br>
+    <%= f.text_field :telefone %>
   </div>
   <div class="actions">
     <%= f.submit %>

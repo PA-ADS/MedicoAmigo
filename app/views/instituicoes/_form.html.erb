@@ -41,11 +41,13 @@
   </div>
    <div class="field">
     <%= f.label :uf %><br>
-    <%= collection_select(:instituicao, :uf, Estado.all, :uf, :nome, prompt: true) %>
+    <%= collection_select(:instituicao, :uf, Estado.all, :uf, :nome, 
+      {prompt: true}, {:id => "uf_ajax"}) %>
   </div>
   <div class="field">
     <%= f.label :cidade %><br>
-    <%= collection_select(:instituicao, :cidade, Municipio.all, :id, :nome, {prompt: true}) %>
+    <%= collection_select(:instituicao, :cidade, {}, :id, :nome, 
+      {prompt: true}, {:id => "cidade_ajax"}) %>
   </div>
   <div class="field">
     <%= f.label :cep %><br>

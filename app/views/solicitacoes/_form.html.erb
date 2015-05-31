@@ -1,0 +1,57 @@
+<%= form_for(@solicitacao) do |f| %>
+  <% if @solicitacao.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@solicitacao.errors.count, "error") %> prohibited this solicitacao from being saved:</h2>
+
+      <ul>
+      <% @solicitacao.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :instituicao_id %><br>
+    <%= f.number_field :instituicao_id %>
+  </div>
+  <div class="field">
+    <%= f.label :medico_id %><br>
+    <%= f.number_field :medico_id %>
+  </div>
+  <div class="field">
+    <%= f.label :clinica_id %><br>
+    <%= f.number_field :clinica_id %>
+  </div>
+  <div class="field">
+    <%= f.label :paciente_id %><br>
+    <%= f.number_field :paciente_id %>
+  </div>
+  <div class="field">
+    <%= f.label :solicitante %><br>
+    <%= f.text_field :solicitante %>
+  </div>
+  <div class="field">
+    <%= f.label :data_emissao %><br>
+    <%= f.date_select :data_emissao %>
+  </div>
+  <div class="field">
+    <%= f.label :data_agendamento %><br>
+    <%= f.date_select :data_agendamento %>
+  </div>
+  <div class="field">
+    <%= f.label :hora_agendamento %><br>
+    <%= f.time_select :hora_agendamento %>
+  </div>
+  <div class="field">
+    <%= f.label :status %><br>
+    <%= f.text_field :status %>
+  </div>
+  <div class="field">
+    <%= f.label :descricao %><br>
+    <%= f.text_area :descricao %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,1 @@
+json.extract! @solicitacao, :id, :instituicao_id, :medico_id, :clinica_id, :paciente_id, :solicitante, :data_emissao, :data_agendamento, :hora_agendamento, :status, :descricao, :created_at, :updated_at

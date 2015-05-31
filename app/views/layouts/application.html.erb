@@ -15,9 +15,16 @@
 					<li><%= link_to "Fazer Login", log_in_path %></li>
 					<li><%= link_to "Cadastre-se", new_medico_path %></li>
 				<% else %>
-					<li><%= link_to "Solicitações", "" %></li>
-					<li><%= link_to "Agendas", agendas_path %></li>
-					<li><%= link_to "Clínicas", clinicas_path %></li>
+					<% if usuario_corrente.tipo == "M" %>
+						<li><%= link_to "Solicitações", "" %></li>
+						<li><%= link_to "Agendas", agendas_path %></li>
+						<li><%= link_to "Clínicas", clinicas_path %></li>
+					<% elsif usuario_corrente.tipo == "A" %>
+						<li><%= link_to "Instituição", instituicoes_path %></li>
+					<% elsif usuario_corrente.tipo == "I" %>
+						<li><%= link_to "Agendas", "" %></li>
+						<li><%= link_to "Pacientes", pacientes_path %></li>
+					<%end%>
 					<li><%= usuario_corrente.email %></li>
 					<li><%= link_to "Sair", log_out_path %></li>
 				<% end %>

@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  instituicao_id: 1
+  medico_id: 1
+  clinica_id: 1
+  paciente_id: 1
+  solicitante: MyString
+  data_emissao: 2015-05-26
+  data_agendamento: 2015-05-26
+  hora_agendamento: 2015-05-26 21:05:03
+  status: MyString
+  descricao: MyText
+
+two:
+  instituicao_id: 1
+  medico_id: 1
+  clinica_id: 1
+  paciente_id: 1
+  solicitante: MyString
+  data_emissao: 2015-05-26
+  data_agendamento: 2015-05-26
+  hora_agendamento: 2015-05-26 21:05:03
+  status: MyString
+  descricao: MyText

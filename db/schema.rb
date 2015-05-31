@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150526002649) do
+ActiveRecord::Schema.define(version: 20150527000918) do
 
   create_table "agendas", force: :cascade do |t|
     t.integer  "medico_id",    limit: 4
@@ -98,6 +98,36 @@ ActiveRecord::Schema.define(version: 20150526002649) do
     t.string   "uf",         limit: 2
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
+  end
+
+  create_table "pacientes", force: :cascade do |t|
+    t.string   "nome",        limit: 60
+    t.string   "cpf",         limit: 11
+    t.string   "endereco",    limit: 60
+    t.string   "end_numero",  limit: 6
+    t.string   "complemento", limit: 15
+    t.string   "bairro",      limit: 45
+    t.string   "uf",          limit: 2
+    t.integer  "cidade",      limit: 4
+    t.string   "cep",         limit: 8
+    t.string   "telefone",    limit: 11
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "solicitacoes", force: :cascade do |t|
+    t.integer  "instituicao_id",   limit: 4
+    t.integer  "medico_id",        limit: 4
+    t.integer  "clinica_id",       limit: 4
+    t.integer  "paciente_id",      limit: 4
+    t.string   "solicitante",      limit: 45
+    t.date     "data_emissao"
+    t.date     "data_agendamento"
+    t.time     "hora_agendamento"
+    t.string   "status",           limit: 1
+    t.text     "descricao",        limit: 65535
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
   end
 
   create_table "usuarios", force: :cascade do |t|

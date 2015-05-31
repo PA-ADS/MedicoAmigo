@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Instituicao:</strong>
+  <%= @solicitacao.instituicao_id %>
+</p>
+
+<p>
+  <strong>Medico:</strong>
+  <%= @solicitacao.medico_id %>
+</p>
+
+<p>
+  <strong>Clinica:</strong>
+  <%= @solicitacao.clinica_id %>
+</p>
+
+<p>
+  <strong>Paciente:</strong>
+  <%= @solicitacao.paciente_id %>
+</p>
+
+<p>
+  <strong>Solicitante:</strong>
+  <%= @solicitacao.solicitante %>
+</p>
+
+<p>
+  <strong>Data emissao:</strong>
+  <%= @solicitacao.data_emissao %>
+</p>
+
+<p>
+  <strong>Data agendamento:</strong>
+  <%= @solicitacao.data_agendamento %>
+</p>
+
+<p>
+  <strong>Hora agendamento:</strong>
+  <%= @solicitacao.hora_agendamento %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @solicitacao.status %>
+</p>
+
+<p>
+  <strong>Descricao:</strong>
+  <%= @solicitacao.descricao %>
+</p>
+
+<%= link_to 'Edit', edit_solicitacao_path(@solicitacao) %> |
+<%= link_to 'Back', solicitacoes_path %>
