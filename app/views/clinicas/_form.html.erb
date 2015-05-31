@@ -42,7 +42,7 @@
   </div>
   <div class="field">
     <%= f.label :cidade %><br>
-    <%= collection_select(:clinica, :cidade, {}, :id, :nome, 
+    <%= collection_select(:clinica, :cidade, Municipio.where(:uf => @clinica.uf), :id, :nome, 
       {prompt: true}, {:id => "cidade_ajax"}) %>
   </div>
   <div class="field">

@@ -8,7 +8,7 @@ class Paciente < ActiveRecord::Base
 	validates :end_numero, :length => {:maximum => 6}
 	validates :complemento, :length => {:maximum => 15}
 	validates :bairro, :length => {:maximum => 45}
-	validates :state, :length => {:is => 2}
+	validates :uf, :length => {:is => 2}
 	validates :cep, :length => {:is => 8}
 	validates :telefone, :length => {:in => 10..11}
 	
