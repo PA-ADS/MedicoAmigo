@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150527000918) do
+ActiveRecord::Schema.define(version: 20150531223524) do
 
   create_table "agendas", force: :cascade do |t|
     t.integer  "medico_id",    limit: 4
@@ -60,6 +60,8 @@ ActiveRecord::Schema.define(version: 20150527000918) do
     t.datetime "updated_at",            null: false
   end
 
+  add_index "estados", ["uf"], name: "index_estados_on_uf", using: :btree
+
   create_table "instituicoes", force: :cascade do |t|
     t.string   "nome",        limit: 60
     t.string   "cnpj",        limit: 14
@@ -99,6 +101,8 @@ ActiveRecord::Schema.define(version: 20150527000918) do
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
   end
+
+  add_index "municipios", ["uf"], name: "index_municipios_on_uf", using: :btree
 
   create_table "pacientes", force: :cascade do |t|
     t.string   "nome",        limit: 60
