@@ -3,8 +3,6 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 municipio_por_uf = ($element_uf, $element_cidade) ->
-  console.log($element_uf)
-  console.log($element_cidade)
 
   if $($element_uf).val() != ''
     $($element_cidade).prop("disabled", false)
