@@ -1,5 +1,9 @@
 class UsuarioController < ApplicationController
-	 before_action :set_usuario, only: [:show, :edit, :update, :destroy]
+	
+  # Verifica as permissões dos usuarios
+  load_and_authorize_resource
+
+  before_action :set_usuario, only: [:show, :edit, :update, :destroy]
   # GET /usuarios
   # GET /usuarios.json
   def index

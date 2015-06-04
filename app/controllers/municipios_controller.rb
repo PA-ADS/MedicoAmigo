@@ -1,4 +1,8 @@
 class MunicipiosController < ApplicationController
+
+  # Verifica as permissões dos usuarios
+  load_and_authorize_resource
+  
   def index
   	@estados = Estado.all
   	@municipios = Municipio.where("uf = 'MG'")

@@ -1,4 +1,6 @@
 class PrincipalController < ApplicationController
-	skip_before_filter :autorizar
 
+	# Ignora a verificação de autorização padrão
+	skip_authorization_check
+	
 end

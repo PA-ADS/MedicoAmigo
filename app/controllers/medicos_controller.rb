@@ -1,5 +1,8 @@
 class MedicosController < ApplicationController
-  skip_before_filter :autorizar, :only => [:new, :create]
+  
+  # Verifica as permissões dos usuarios
+  load_and_authorize_resource
+
   before_action :set_medico, only: [:show, :edit, :update, :destroy]
 
   # GET /medicos
@@ -30,7 +33,7 @@ class MedicosController < ApplicationController
     @medico.usuario.tipo = "M"
     respond_to do |format|
       if @medico.save
-        format.html { redirect_to @medico, notice: 'Medico was successfully created.' }
+        format.html { redirect_to root_path, notice: 'Medico was successfully created.' }
         format.json { render :show, status: :created, location: @medico }
       else
         format.html { render :new }

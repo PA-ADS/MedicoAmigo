@@ -1,4 +1,8 @@
 class InstituicoesController < ApplicationController
+  
+  # Verifica as permissões dos usuarios
+  load_and_authorize_resource
+
   before_action :set_instituicao, only: [:show, :edit, :update, :destroy]
 
   # GET /instituicoes

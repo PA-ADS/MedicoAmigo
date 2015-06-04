@@ -1,4 +1,8 @@
 class EspecialidadesController < ApplicationController
+  
+  # Verifica as permissões dos usuarios
+  load_and_authorize_resource
+
   before_action :set_especialidade, only: [:show, :edit, :update, :destroy]
 
   # GET /especialidades
