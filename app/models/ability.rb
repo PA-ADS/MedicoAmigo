@@ -8,7 +8,7 @@ class Ability
         can :manage, [Clinica, Agenda], :medico_id => user.medico.id
     elsif user.tipo == "I"
         can :update, Instituicao, :id => user.instituicao.id
-        can :manage, @paciente
+        can :manage, Paciente
     elsif user.tipo == "A"
         can :manage, :all
     else

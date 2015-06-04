@@ -15,6 +15,7 @@ class Usuario < ActiveRecord::Base
 
 	# Relacionamento Modelos
 	has_one :medico
+	has_one :instituicao
 
 	# Funções a serem executadas antes de salvar
 	before_save :cript_senha
