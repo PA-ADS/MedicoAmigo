@@ -1,14 +1,12 @@
 class Medico < ActiveRecord::Base
-	after_validation :tratarcpf , on: :create
-
 	
+	before_save :tratarcpf , on: :create
+
 	## Validação de campos do formulario
 	validates_presence_of :nome, :cpf, :crm, :crm_uf, :especialidade_id
 	validates :nome, :length => {:in => 2..60}
 	usar_como_cpf :cpf
-	validates_uniqueness_of :cpf
 	validates :crm, :length => {:maximum => 10}
-
 	
 	## Relacionamento das tabelas
 	belongs_to 	:especialidade
@@ -21,10 +19,7 @@ class Medico < ActiveRecord::Base
 	accepts_nested_attributes_for :usuario
 
 	def tratarcpf
-		write_attribute(:cpf , self.cpf.to_s.delete!('.-'))
-		
-		puts "teste"
-		puts cpf
+			write_attribute(:cpf , self.to_s.delete!('.-'))
 	end
 
 end

@@ -38,15 +38,6 @@ ActiveRecord::Schema.define(version: 20150531223524) do
     t.datetime "updated_at",                 null: false
   end
 
-  create_table "creditos", force: :cascade do |t|
-    t.integer  "medico_id",    limit: 4
-    t.date     "data_emissao"
-    t.integer  "credito",      limit: 4
-    t.integer  "saldo",        limit: 4
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-  end
-
   create_table "especialidades", force: :cascade do |t|
     t.string   "descricao",  limit: 45
     t.datetime "created_at",            null: false

@@ -5669,3 +5669,9 @@ Municipio.create(:id => 5568, :cod_ibge => "22203", :nome => "Vila Boa", :uf => 
 Municipio.create(:id => 5569, :cod_ibge => "22302", :nome => "Vila Propício", :uf => "GO")
 Municipio.create(:id => 5570, :cod_ibge => "00108", :nome => "Brasília", :uf => "DF")
 # Fim da criação dos municipios brasileiros
+
+# Inicio da criação do usuario admin
+Usuario.delete_all
+Usuario.create(:email => "admin@admin.com", :email_confirmation =>"admin@admin.com", :tipo => "A", :password => "123456", :password_confirmation => "123456")
+# Inicio da criação do usuario admin
+  
