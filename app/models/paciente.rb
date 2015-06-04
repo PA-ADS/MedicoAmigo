@@ -6,7 +6,6 @@ class Paciente < ActiveRecord::Base
 	validates :nome, :cpf, :endereco, :end_numero, :complemento, 
 		:bairro, :cidade, :uf, :cep, :telefone, :presence => true
 	validates :nome, :endereco, :length => {:maximum => 60}
-	validates :cpf, :length => {:is => 11}
 	usar_como_cpf :cpf
 	validates :end_numero, :length => {:maximum => 6}
 	validates :complemento, :length => {:maximum => 15}
