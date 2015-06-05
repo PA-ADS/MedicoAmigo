@@ -1,0 +1,28 @@
+<h1>Lista agendas</h1>
+<table>
+	<thead>
+		<tr>
+			<th>Especialidade</th>
+			<th>Médico</th>
+			<th>Clinica</th>
+			<th>Cidade</th>
+			<th>Data emissao</th>
+			<th>Saldo</th>
+			<th></th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<% @agendas.each do |agenda| %>
+			<tr>
+				<td><%= agenda.medico.especialidade.descricao %></td>
+				<td><%= agenda.medico.nome %></td>
+				<td><%= agenda.clinica.nome %></td>
+				<td><%= agenda.clinica.municipio.nome %></td>        
+				<td><%= agenda.data_emissao %></td>
+				<td><%= agenda.saldo %></td>
+				<td><%= link_to 'Solicitar', solicita_agenda_path(agenda) %></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>

@@ -2,8 +2,11 @@ Rails.application.routes.draw do
  
   resources :pacientes
   resources :solicitacoes
+  
   get 'log_in' => 'sessions#new', :as => 'log_in'
   get 'log_out' => 'sessions#destroy', :as => 'log_out'
+  get 'agenda_aberta' => 'agendas#aberta', :as => 'agenda_aberta'
+  get 'solicitacoes/new/:id' => 'solicitacoes#new', :as => 'solicita_agenda' 
 
   get 'municipios/index'
   get 'municipios/estado_municipio', as: 'estado_municipio'

@@ -18,7 +18,9 @@ class SolicitacoesController < ApplicationController
 
   # GET /solicitacoes/new
   def new
-    @solicitacao = Solicitacao.new
+    @agenda = Agenda.find(params[:id])
+    @solicitacao = Solicitacao.new(:instituicao_id => usuario_corrente.instituicao.id, 
+      :agenda_id => @agenda.id, :data_emissao => Date.today, :status => "PE")
   end
 
   # GET /solicitacoes/1/edit
@@ -73,6 +75,7 @@ class SolicitacoesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def solicitacao_params
-      params.require(:solicitacao).permit(:instituicao_id, :medico_id, :clinica_id, :paciente_id, :solicitante, :data_emissao, :data_agendamento, :hora_agendamento, :status, :descricao)
+      params.require(:solicitacao).permit(:instituicao_id, :agenda_id, :paciente_id, 
+        :solicitante, :data_emissao, :data_agendamento, :hora_agendamento, :status, :descricao)
     end
 end

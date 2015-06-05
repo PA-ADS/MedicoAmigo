@@ -22,7 +22,7 @@
 					<% elsif usuario_corrente.tipo == "A" %>
 						<li><%= link_to "Instituição", instituicoes_path %></li>
 					<% elsif usuario_corrente.tipo == "I" %>
-						<li><%= link_to "Agendas", "" %></li>
+						<li><%= link_to "Agendas", agenda_aberta_path %></li>
 						<li><%= link_to "Pacientes", pacientes_path %></li>
 					<%end%>
 					<li><%= usuario_corrente.email %></li>

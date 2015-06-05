@@ -16,36 +16,24 @@
     <%= f.number_field :instituicao_id %>
   </div>
   <div class="field">
-    <%= f.label :medico_id %><br>
-    <%= f.number_field :medico_id %>
+    <%= f.label :agenda_id %><br>
+    <%= f.number_field :agenda_id %>
   </div>
   <div class="field">
-    <%= f.label :clinica_id %><br>
-    <%= f.number_field :clinica_id %>
+    <%= f.label :data_emissao %><br>
+    <%= f.date_field :data_emissao %>
+  </div>
+  <div class="field">
+    <% f.text_field :status %>
   </div>
   <div class="field">
     <%= f.label :paciente_id %><br>
-    <%= f.number_field :paciente_id %>
+    <%= collection_select(:solicitacao, :paciente_id, Paciente.all, 
+      :id, :nome, prompt: true) %>
   </div>
   <div class="field">
     <%= f.label :solicitante %><br>
     <%= f.text_field :solicitante %>
-  </div>
-  <div class="field">
-    <%= f.label :data_emissao %><br>
-    <%= f.date_select :data_emissao %>
-  </div>
-  <div class="field">
-    <%= f.label :data_agendamento %><br>
-    <%= f.date_select :data_agendamento %>
-  </div>
-  <div class="field">
-    <%= f.label :hora_agendamento %><br>
-    <%= f.time_select :hora_agendamento %>
-  </div>
-  <div class="field">
-    <%= f.label :status %><br>
-    <%= f.text_field :status %>
   </div>
   <div class="field">
     <%= f.label :descricao %><br>

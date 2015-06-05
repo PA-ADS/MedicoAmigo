@@ -23,9 +23,9 @@
     <% @solicitacoes.each do |solicitacao| %>
       <tr>
         <td><%= solicitacao.instituicao_id %></td>
-        <td><%= solicitacao.medico_id %></td>
-        <td><%= solicitacao.clinica_id %></td>
-        <td><%= solicitacao.paciente_id %></td>
+        <td><%= solicitacao.agenda.medico.nome %></td>
+        <td><%= solicitacao.agenda.clinica.nome %></td>
+        <td><%= solicitacao.paciente.nome %></td>
         <td><%= solicitacao.solicitante %></td>
         <td><%= solicitacao.data_emissao %></td>
         <td><%= solicitacao.data_agendamento %></td>

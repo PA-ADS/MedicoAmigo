@@ -17,6 +17,7 @@ class Paciente < ActiveRecord::Base
 	
 	# Associação entre modelos
 	belongs_to :municipio, :foreign_key => "cidade"
+	has_many :solicitacoes
 
 	def tratarcpf
 		write_attribute(:cpf , self.cpf.to_s.delete!('.-'))

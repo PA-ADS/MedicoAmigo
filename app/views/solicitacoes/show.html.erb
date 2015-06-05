@@ -7,17 +7,17 @@
 
 <p>
   <strong>Medico:</strong>
-  <%= @solicitacao.medico_id %>
+  <%= @solicitacao.agenda.medico.nome %>
 </p>
 
 <p>
   <strong>Clinica:</strong>
-  <%= @solicitacao.clinica_id %>
+  <%= @solicitacao.agenda.clinica.nome %>
 </p>
 
 <p>
   <strong>Paciente:</strong>
-  <%= @solicitacao.paciente_id %>
+  <%= @solicitacao.paciente.nome %>
 </p>
 
 <p>

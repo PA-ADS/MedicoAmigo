@@ -8,7 +8,7 @@ class AgendasController < ApplicationController
   # GET /agendas
   # GET /agendas.json
   def index
-     @agendas = Agenda.where(:medico_id => usuario_corrente.medico.id)
+    @agendas = Agenda.where(:medico_id => usuario_corrente.medico.id)
   end
 
   # GET /agendas/1
@@ -67,6 +67,10 @@ class AgendasController < ApplicationController
       format.html { redirect_to agendas_url, notice: 'Agenda was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def aberta
+    @agendas = Agenda.where('saldo > 0')
   end
 
   private

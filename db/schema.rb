@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150531223524) do
+ActiveRecord::Schema.define(version: 20150605003555) do
 
   create_table "agendas", force: :cascade do |t|
     t.integer  "medico_id",    limit: 4
@@ -36,6 +36,15 @@ ActiveRecord::Schema.define(version: 20150531223524) do
     t.string   "cep",             limit: 8
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
+  end
+
+  create_table "creditos", force: :cascade do |t|
+    t.integer  "medico_id",    limit: 4
+    t.date     "data_emissao"
+    t.integer  "credito",      limit: 4
+    t.integer  "saldo",        limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "especialidades", force: :cascade do |t|
@@ -112,8 +121,6 @@ ActiveRecord::Schema.define(version: 20150531223524) do
 
   create_table "solicitacoes", force: :cascade do |t|
     t.integer  "instituicao_id",   limit: 4
-    t.integer  "medico_id",        limit: 4
-    t.integer  "clinica_id",       limit: 4
     t.integer  "paciente_id",      limit: 4
     t.string   "solicitante",      limit: 45
     t.date     "data_emissao"
@@ -123,7 +130,10 @@ ActiveRecord::Schema.define(version: 20150531223524) do
     t.text     "descricao",        limit: 65535
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
+    t.integer  "agenda_id",        limit: 4
   end
+
+  add_index "solicitacoes", ["agenda_id"], name: "index_solicitacoes_on_agenda_id", using: :btree
 
   create_table "usuarios", force: :cascade do |t|
     t.string   "email",         limit: 60

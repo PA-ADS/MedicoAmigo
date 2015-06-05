@@ -17,6 +17,7 @@ class Instituicao < ActiveRecord::Base
 	belongs_to 	:municipio, :foreign_key => "cidade"
 	belongs_to	:usuario, :dependent => :destroy
 	has_one 	:estado
+	has_many :solicitacoes
 
 	accepts_nested_attributes_for :usuario
 

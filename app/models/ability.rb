@@ -9,6 +9,8 @@ class Ability
     elsif user.tipo == "I"
         can :update, Instituicao, :id => user.instituicao.id
         can :manage, Paciente
+        can :aberta, Agenda
+        can [:new, :create, :read], Solicitacao
     elsif user.tipo == "A"
         can :manage, :all
     else
