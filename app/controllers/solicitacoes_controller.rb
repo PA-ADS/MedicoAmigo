@@ -8,7 +8,7 @@ class SolicitacoesController < ApplicationController
   # GET /solicitacoes
   # GET /solicitacoes.json
   def index
-    @solicitacoes = Solicitacao.all
+    @solicitacoes = Solicitacao.accessible_by(current_ability)
   end
 
   # GET /solicitacoes/1
