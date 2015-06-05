@@ -9,4 +9,14 @@ class Agenda < ActiveRecord::Base
 	validates :quantidade, :clinica_id, :presence => true
 	validates :quantidade, :numericality => {:only_integer => true, :greater_than => 0}
 	
+	def estornar_baixa
+		self.saldo += 1
+		save!
+	end
+
+	def baixar_agenda
+		self.saldo -= 1
+		save!
+	end
+
 end

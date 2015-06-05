@@ -38,12 +38,18 @@ class SolicitacoesController < ApplicationController
     @agenda = Agenda.find(solicitacao_params[:agenda_id])
 
     respond_to do |format|
-      if @solicitacao.save
-        format.html { redirect_to @solicitacao, notice: 'Solicitacao was successfully created.' }
-        format.json { render :show, status: :created, location: @solicitacao }
-      else
-        format.html { render :new }
-        format.json { render json: @solicitacao.errors, status: :unprocessable_entity }
+      begin 
+        @agenda.baixar_agenda
+        if @solicitacao.save
+          format.html { redirect_to @solicitacao, notice: 'Solicitacao was successfully created.' }
+          format.json { render :show, status: :created, location: @solicitacao }
+        else
+          @agenda.estornar_baixa
+          format.html { render :new }
+          format.json { render json: @solicitacao.errors, status: :unprocessable_entity }
+        end
+      rescue
+        format.html { redirect_to agenda_aberta_path, notice: 'Não existe saldo para a agenda selecionada'}
       end
     end
   end
