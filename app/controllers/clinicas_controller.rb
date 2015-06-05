@@ -8,7 +8,7 @@ class ClinicasController < ApplicationController
   # GET /clinicas
   # GET /clinicas.json
   def index
-    @clinicas = Clinica.where(:medico_id => usuario_corrente.medico.id)
+    @clinicas = Clinica.accessible_by(current_ability)
   end
 
   # GET /clinicas/1
