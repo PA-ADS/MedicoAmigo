@@ -12,19 +12,13 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :instituicao_id %><br>
-    <%= f.number_field :instituicao_id %>
+    <%= f.hidden_field :instituicao_id %>
   </div>
   <div class="field">
-    <%= f.label :agenda_id %><br>
-    <%= f.number_field :agenda_id %>
+    <%= f.hidden_field :agenda_id %>
   </div>
   <div class="field">
-    <%= f.label :data_emissao %><br>
-    <%= f.date_field :data_emissao %>
-  </div>
-  <div class="field">
-    <% f.text_field :status %>
+    <%= f.hidden_field :data_emissao %>
   </div>
   <div class="field">
     <%= f.label :paciente_id %><br>

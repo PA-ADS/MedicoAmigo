@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150605003555) do
+ActiveRecord::Schema.define(version: 20150605131835) do
 
   create_table "agendas", force: :cascade do |t|
     t.integer  "medico_id",    limit: 4
@@ -126,7 +126,7 @@ ActiveRecord::Schema.define(version: 20150605003555) do
     t.date     "data_emissao"
     t.date     "data_agendamento"
     t.time     "hora_agendamento"
-    t.string   "status",           limit: 1
+    t.string   "status",           limit: 2
     t.text     "descricao",        limit: 65535
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false

@@ -20,7 +20,7 @@ class SolicitacoesController < ApplicationController
   def new
     @agenda = Agenda.find(params[:id])
     @solicitacao = Solicitacao.new(:instituicao_id => usuario_corrente.instituicao.id, 
-      :agenda_id => @agenda.id, :data_emissao => Date.today, :status => "PE")
+      :agenda_id => @agenda.id, :data_emissao => Date.today)
   end
 
   # GET /solicitacoes/1/edit
@@ -31,6 +31,11 @@ class SolicitacoesController < ApplicationController
   # POST /solicitacoes.json
   def create
     @solicitacao = Solicitacao.new(solicitacao_params)
+    
+    # Inicializa o status como pendente para novas solicitações
+    @solicitacao.status = "PE"
+    @solicitacao.instituicao_id = usuario_corrente.instituicao.id
+    @agenda = Agenda.find(solicitacao_params[:agenda_id])
 
     respond_to do |format|
       if @solicitacao.save
@@ -76,6 +81,6 @@ class SolicitacoesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def solicitacao_params
       params.require(:solicitacao).permit(:instituicao_id, :agenda_id, :paciente_id, 
-        :solicitante, :data_emissao, :data_agendamento, :hora_agendamento, :status, :descricao)
+        :solicitante, :data_emissao, :data_agendamento, :hora_agendamento, :descricao)
     end
 end
