@@ -16,7 +16,7 @@
 					<li><%= link_to "Cadastre-se", new_medico_path %></li>
 				<% else %>
 					<% if usuario_corrente.tipo == "M" %>
-						<li><%= link_to "Solicitações", "" %></li>
+						<li><%= link_to "Solicitações", solicitacoes_path %></li>
 						<li><%= link_to "Agendas", agendas_path %></li>
 						<li><%= link_to "Clínicas", clinicas_path %></li>
 					<% elsif usuario_corrente.tipo == "A" %>

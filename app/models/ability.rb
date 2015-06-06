@@ -6,6 +6,7 @@ class Ability
     if user.tipo == "M"
         can :manage, Medico, :id => user.medico.id
         can :manage, [Clinica, Agenda], :medico_id => user.medico.id
+        can [:read, :aprovar, :update], Solicitacao, :agenda => {:medico_id => user.medico.id}
     elsif user.tipo == "I"
         can :update, Instituicao, :id => user.instituicao.id
         can :manage, Paciente

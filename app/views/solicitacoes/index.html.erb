@@ -31,6 +31,9 @@
         <td><%= solicitacao.hora_agendamento %></td>
         <td><%= solicitacao.status %></td>
         <td><%= link_to 'Detalhes', solicitacao %></td>
+        <% if usuario_corrente.tipo == "M" %>
+          <td><%= link_to 'Aprovar/Rejeitar', aprovar_solicitacao_path(solicitacao) %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>

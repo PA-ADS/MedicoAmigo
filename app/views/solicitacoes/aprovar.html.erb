@@ -1,0 +1,40 @@
+<h1>Aprovação solicitação de consulta</h1>
+<%= form_for(@solicitacao) do |f| %>
+  <% if @solicitacao.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@solicitacao.errors.count, "error") %> prohibited this solicitacao from being saved:</h2>
+
+      <ul>
+      <% @solicitacao.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+  	<ul>
+  		<li>Instituição: <%= @solicitacao.instituicao.nome %></li>
+  		<li>Paciente: <%= @solicitacao.paciente.nome %></li>
+  		<li>Descrição: <%= @solicitacao.descricao %></li>
+  	</ul>
+  </div>
+
+  <div class="field">
+    <%= f.label :data_agendamento %><br>
+    <%= f.date_select :data_agendamento, {:prompt => true} %>
+  </div>
+  <div class="field">
+    <%= f.label :hora_agendamento %><br>
+    <%= f.time_select :hora_agendamento, {:prompt => true} %>
+  </div>
+  <div class="field">
+  	Aprovar<br>
+    <%= f.radio_button :status, "AP" %> Sim
+    <%= f.radio_button :status, "RJ", {:checked => true} %> Não
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+
+<% end %>

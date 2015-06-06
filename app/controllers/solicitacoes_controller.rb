@@ -58,7 +58,7 @@ class SolicitacoesController < ApplicationController
   # PATCH/PUT /solicitacoes/1.json
   def update
     respond_to do |format|
-      if @solicitacao.update(solicitacao_params)
+      if @solicitacao.update(update_params)
         format.html { redirect_to @solicitacao, notice: 'Solicitacao was successfully updated.' }
         format.json { render :show, status: :ok, location: @solicitacao }
       else
@@ -78,6 +78,10 @@ class SolicitacoesController < ApplicationController
     end
   end
 
+  def aprovar
+    @solicitacao = set_solicitacao
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_solicitacao
@@ -87,6 +91,11 @@ class SolicitacoesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def solicitacao_params
       params.require(:solicitacao).permit(:instituicao_id, :agenda_id, :paciente_id, 
-        :solicitante, :data_emissao, :data_agendamento, :hora_agendamento, :descricao)
+        :solicitante, :data_emissao, :descricao)
     end
+
+    def update_params
+      params.require(:solicitacao).permit(:data_agendamento, :hora_agendamento, :status)
+    end
+
 end
