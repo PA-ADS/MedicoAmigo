@@ -28,7 +28,7 @@
         <td><%= solicitacao.solicitante %></td>
         <td><%= solicitacao.data_emissao %></td>
         <td><%= solicitacao.data_agendamento %></td>
-        <td><%= solicitacao.hora_agendamento %></td>
+        <td><%= format_time(solicitacao.hora_agendamento) %></td>
         <td><%= solicitacao.status %></td>
         <td><%= link_to 'Detalhes', solicitacao %></td>
         <% if usuario_corrente.tipo == "M" %>
