@@ -1,39 +1,48 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Listing Medicos</h1>
-
-<table>
+<%- model_class = Medico -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>Nome</th>
-      <th>Cpf</th>
-      <th>Crm</th>
-      <th>Crm uf</th>
-      <th>Telefone</th>
-      <th>Especialidade</th>
-      <th>Email</th>
-      <th colspan="3"></th>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:nome) %></th>
+      <th><%= model_class.human_attribute_name(:cpf) %></th>
+      <th><%= model_class.human_attribute_name(:crm) %></th>
+      <th><%= model_class.human_attribute_name(:crm_uf) %></th>
+      <th><%= model_class.human_attribute_name(:telefone) %></th>
+      <th><%= model_class.human_attribute_name(:especialidade_id) %></th>
+      <th><%= model_class.human_attribute_name(:usuario_id) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
-
   <tbody>
     <% @medicos.each do |medico| %>
       <tr>
+        <td><%= link_to medico.id, medico_path(medico) %></td>
         <td><%= medico.nome %></td>
         <td><%= medico.cpf %></td>
         <td><%= medico.crm %></td>
         <td><%= medico.crm_uf %></td>
         <td><%= medico.telefone %></td>
-        <td><%= medico.especialidade.descricao %></td>
-        <td><%= medico.usuario.email %></td>
-        <td><%= link_to 'Show', medico %></td>
-        <td><%= link_to 'Edit', edit_medico_path(medico) %></td>
-        <td><%= link_to 'Destroy', medico, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= medico.especialidade_id %></td>
+        <td><%= medico.usuario_id %></td>
+        <td><%=l medico.created_at %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_medico_path(medico), :class => 'btn btn-default btn-xs' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      medico_path(medico),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-xs btn-danger' %>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Medico', new_medico_path %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_medico_path,
+            :class => 'btn btn-primary' %>

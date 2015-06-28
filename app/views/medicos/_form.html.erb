@@ -1,63 +1,98 @@
-<%= form_for(@medico) do |f| %>
-  <% if @medico.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@medico.errors.count, "error") %> 
-        prohibited this medico from being saved:</h2>
-      <ul>
-      <% @medico.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+<%= form_for @medico, :html => { :class => "form-horizontal medico" } do |f| %>
+
+    <% if @medico.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@medico.errors.count, "error") %> prohibited this medico from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @medico.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :nome %><br>
-    <%= f.text_field :nome %>
+  <div class="control-group">
+    <%= f.label :nome, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :nome, :class => 'form-control', :placeholder => "Nome e Sobrenome" %>
+    </div>
+    <%= error_span(@medico[:nome]) %>
   </div>
-  <div class="field">
-    <%= f.label :cpf %><br>
-    <%= f.text_field :cpf %>
+  <div class="control-group">
+    <%= f.label :cpf, "CPF", :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :cpf, :class => 'form-control' %>
+    </div>
+    <%= error_span(@medico[:cpf]) %>
   </div>
-  <div class="field">
-    <%= f.label :crm %><br>
-    <%= f.text_field :crm %>
+  <div class="control-group">
+    <%= f.label :crm, "Número CRM",:class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :crm, :class => 'form-control' %>
+    </div>
+    <%= error_span(@medico[:crm]) %>
   </div>
-  <div class="field">
-    <%= f.label :crm_uf %><br>
-    <%= collection_select(:medico, :crm_uf, Estado.all, :uf, :uf, prompt: true) %>
+  <div class="control-group">
+    <%= f.label :crm_uf, "Estado CRM", :class => 'control-label' %>
+    <div class="controls">
+      <%= collection_select(:medico, :crm_uf, Estado.all, :uf, :uf, {prompt: true}, {:class => "form-control"}) %>
+    </div>
+    <%= error_span(@medico[:crm_uf]) %>
   </div>
-  <div class="field">
-    <%= f.label :telefone %><br>
-    <%= f.text_field :telefone %>
+  <div class="control-group">
+    <%= f.label :telefone, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.phone_field :telefone, :class => 'form-control' %>
+    </div>
+    <%= error_span(@medico[:telefone]) %>
   </div>
-  <div class="field">
-    <%= f.label :especialidade_id %><br>
-    <%= collection_select(:medico, :especialidade_id, Especialidade.all, :id, :descricao, prompt: true) %>
+  <div class="control-group">
+    <%= f.label :especialidade_id, :class => 'control-label' %>
+    <div class="controls">
+      <%= collection_select(:medico, :especialidade_id, Especialidade.all, :id, :descricao, {prompt: true}, {:class => "form-control"}) %>
+    </div>
+    <%= error_span(@medico[:especialidade_id]) %>
   </div>
+
   <% if @medico.new_record? %>
-  <%= f.fields_for :usuario do |usuario_form| %>
-    <div class="field">
-      <%= usuario_form.label :email %><br>
-      <%= usuario_form.text_field :email %>
-    </div>
-    <div class="field">
-      <%= usuario_form.label :email_confirmation %><br>
-      <%= usuario_form.text_field :email_confirmation %>
-    </div>
-    <div class="field">
-      <%= usuario_form.label :password %><br>
-      <%= usuario_form.password_field :password %>
-    </div>
-    <div class="field">
-      <%= usuario_form.label :password_confirmation %><br>
-      <%= usuario_form.password_field :password_confirmation %>
-    </div>
+    <%= f.fields_for :usuario do |usuario_form| %>
+      <div class="control-group">
+        <%= usuario_form.label :email, "E-mail", :class => 'control-label' %>
+        <div class="controls">
+          <%= usuario_form.text_field :email, :class => 'form-control' %>
+        </div>
+      <%= error_span(@medico[:email]) %>
+      </div>
+      <div class="control-group">
+        <%= usuario_form.label :email_confirmation, "Confirme seu e-mail", :class => 'control-label' %>
+        <div class="controls">
+          <%= usuario_form.text_field :email_confirmation, :class => 'form-control' %>
+        </div>
+      <%= error_span(@medico[:email_confirmation]) %>
+      </div>
+      <div class="control-group">
+        <%= usuario_form.label :password, "Informe uma senha", :class => 'control-label' %>
+        <div class="controls">
+          <%= usuario_form.password_field :password, :class => 'form-control' %>
+        </div>
+      <%= error_span(@medico[:password]) %>
+      </div>
+      <div class="control-group">
+        <%= usuario_form.label :password_confirmation, "Confirme sua senha", :class => 'control-label' %>
+        <div class="controls">
+          <%= usuario_form.password_field :password_confirmation, :class => 'form-control' %>
+        </div>
+      <%= error_span(@medico[:password_confirmation]) %>
+      </div>
+    <% end %>
   <% end %>
-  <% end %>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  
+  <%= f.submit "Comfirmar",:class => 'btn btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+            root_path, :class => 'btn btn-default' %>
+
 <% end %>
-
-
