@@ -3,7 +3,7 @@
     <% if @medico.errors.any? %>
     <div id="error_expl" class="panel panel-danger">
       <div class="panel-heading">
-        <h3 class="panel-title"><%= pluralize(@medico.errors.count, "error") %> prohibited this medico from being saved:</h3>
+        <h3 class="panel-title">Verifique os <%= pluralize(@medico.errors.count, "erro") %> abaixo</h3>
       </div>
       <div class="panel-body">
         <ul>
@@ -18,21 +18,21 @@
   <div class="control-group">
     <%= f.label :nome, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :nome, :class => 'form-control', :placeholder => "Nome e Sobrenome" %>
+      <%= f.text_field :nome, :class => 'form-control', :placeholder => "Informe nome e sobrenome" %>
     </div>
     <%= error_span(@medico[:nome]) %>
   </div>
   <div class="control-group">
     <%= f.label :cpf, "CPF", :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :cpf, :class => 'form-control' %>
+      <%= f.text_field :cpf, :class => 'form-control', :placeholder => "Informe o CPF" %>
     </div>
     <%= error_span(@medico[:cpf]) %>
   </div>
   <div class="control-group">
     <%= f.label :crm, "Número CRM",:class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :crm, :class => 'form-control' %>
+      <%= f.text_field :crm, :class => 'form-control', :placeholder => "Informe o seu CRM" %>
     </div>
     <%= error_span(@medico[:crm]) %>
   </div>
@@ -46,7 +46,7 @@
   <div class="control-group">
     <%= f.label :telefone, :class => 'control-label' %>
     <div class="controls">
-      <%= f.phone_field :telefone, :class => 'form-control' %>
+      <%= f.text_field :telefone, :class => 'form-control', :placeholder => "Informe telefone (31)3254-7856" %>
     </div>
     <%= error_span(@medico[:telefone]) %>
   </div>
@@ -63,35 +63,35 @@
       <div class="control-group">
         <%= usuario_form.label :email, "E-mail", :class => 'control-label' %>
         <div class="controls">
-          <%= usuario_form.text_field :email, :class => 'form-control' %>
+          <%= usuario_form.text_field :email, :class => 'form-control', :placeholder => "Informe um e-mail" %>
         </div>
       <%= error_span(@medico[:email]) %>
       </div>
       <div class="control-group">
         <%= usuario_form.label :email_confirmation, "Confirme seu e-mail", :class => 'control-label' %>
         <div class="controls">
-          <%= usuario_form.text_field :email_confirmation, :class => 'form-control' %>
+          <%= usuario_form.text_field :email_confirmation, :class => 'form-control', :placeholder => "Insira novamente o e-mail" %>
         </div>
       <%= error_span(@medico[:email_confirmation]) %>
       </div>
       <div class="control-group">
         <%= usuario_form.label :password, "Informe uma senha", :class => 'control-label' %>
         <div class="controls">
-          <%= usuario_form.password_field :password, :class => 'form-control' %>
+          <%= usuario_form.password_field :password, :class => 'form-control', :placeholder => "Informe uma senha" %>
         </div>
       <%= error_span(@medico[:password]) %>
       </div>
       <div class="control-group">
         <%= usuario_form.label :password_confirmation, "Confirme sua senha", :class => 'control-label' %>
         <div class="controls">
-          <%= usuario_form.password_field :password_confirmation, :class => 'form-control' %>
+          <%= usuario_form.password_field :password_confirmation, :class => 'form-control', :placeholder => "Confirme a senha informada anteriormente" %>
         </div>
       <%= error_span(@medico[:password_confirmation]) %>
       </div>
     <% end %>
   <% end %>
-  
-  <%= f.submit "Comfirmar",:class => 'btn btn-primary' %>
+  <br>
+  <%= f.submit "Confirmar",:class => 'btn btn-primary' %>
   <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
             root_path, :class => 'btn btn-default' %>
 
