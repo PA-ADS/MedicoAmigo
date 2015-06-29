@@ -5719,6 +5719,7 @@ Clinica.create( :id => 3, :medico_id => 3, :nome => "Clinica do Pedro", :telefon
 	:endereco => "Rua das Clinicas", :end_numero => '100', :end_complemento => "Sala 10", 
 	:bairro => "Bairro da Clinicas", :cidade => "2310" , :uf => "MG", :cep => "30100202")
 # Fim da criação das clinicas
+
 # Inicio da criação da Instituição
 Instituicao.delete_all
 Usuario.create(:id => 5, :email => "instituicao@instituicao.com", :email_confirmation => "instituicao@instituicao.com", 
