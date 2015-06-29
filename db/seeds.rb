@@ -5672,6 +5672,59 @@ Municipio.create(:id => 5570, :cod_ibge => "00108", :nome => "Brasília", :uf =>
 
 # Inicio da criação do usuario admin
 Usuario.delete_all
-Usuario.create(:email => "admin@admin.com", :email_confirmation =>"admin@admin.com", :tipo => "A", :password => "123456", :password_confirmation => "123456")
-# Inicio da criação do usuario admin
-  
+Usuario.create( :id => 1, :email => "admin@admin.com", :email_confirmation =>"admin@admin.com", 
+	:tipo => "A", :password => "123456", :password_confirmation => "123456")
+# Fim da criação do usuario admin
+
+# Inicio da criação dos usuarios medicos
+Medico.delete_all
+Usuario.create(:id => 2, :email => "joao@medico.com", :email_confirmation => "joao@medico.com", 
+	:tipo => "M", :password => "123456", :password_confirmation => "123456")
+Medico.create(:id => 1 ,:nome => "João Medico", :cpf => "75154651588", :crm => "0000000001", :crm_uf => "MG", 
+	:telefone => "3199991234", :especialidade_id => 1, :usuario_id => 2)
+
+Usuario.create(:id => 3, :email => "maria@medico.com", :email_confirmation => "maria@medico.com", 
+	:tipo => "M", :password => "123456", :password_confirmation => "123456")
+Medico.create(:id => 2 ,:nome => "Maria Medica", :cpf => "072.982.869-78", :crm => "0000000002", :crm_uf => "MG", 
+	:telefone => "3199991235", :especialidade_id => 1, :usuario_id => 3)
+
+Usuario.create(:id => 4, :email => "pedro@medico.com", :email_confirmation => "pedro@medico.com", 
+	:tipo => "M", :password => "123456", :password_confirmation => "123456")
+Medico.create(:id => 3 ,:nome => "Pedro Medico", :cpf => "498.258.274-24", :crm => "0000000003", :crm_uf => "MG", 
+	:telefone => "3199991236", :especialidade_id => 1, :usuario_id => 4)
+# Fim da criação dos usuarios medicos
+
+# Inicio da criação dos Pacientes
+Paciente.delete_all
+Paciente.create(:id => 1, :nome => "João Paciente", :cpf => "196.473.954-34", :endereco => "Rua dos pacientes", 
+	:end_numero => "40", :complemento => "apto 10" , :bairro => "Bairro dos pacientes", :uf => "MG", 
+	:cidade => "2310",	:cep => "30100200", :telefone => "3199990000")
+Paciente.create(:id => 2, :nome => "Maria Paciente", :cpf => "545.424.292-61", :endereco => "Rua dos pacientes", 
+	:end_numero => "50", :complemento => "apto 109" , :bairro => "Bairro dos pacientes", :uf => "MG", 
+	:cidade => "2310",	:cep => "30100300", :telefone => "3199990001")
+Paciente.create(:id => 3, :nome => "Pedro Paciente", :cpf => "528.864.745-33", :endereco => "Rua dos pacientes", 
+	:end_numero => "60", :complemento => "apto 209" , :bairro => "Bairro dos pacientes", :uf => "MG", 
+	:cidade => "2310",	:cep => "30100400", :telefone => "3199990002")
+# Fim da criação dos dos Pacientes
+
+# Inicio da criação das clinicas
+Clinica.delete_all
+Clinica.create( :id => 1, :medico_id => 1, :nome => "Clinica do João", :telefone => "3199990001", 
+	:endereco => "Rua das Clinicas", :end_numero => '100', :end_complemento => "Sala 10", 
+	:bairro => "Bairro da Clinicas", :cidade => "2310" , :uf => "MG", :cep => "30100200")
+Clinica.create( :id => 2, :medico_id => 2, :nome => "Clinica da Maria", :telefone => "3199990002", 
+	:endereco => "Rua das Clinicas", :end_numero => '100', :end_complemento => "Sala 10", 
+	:bairro => "Bairro da Clinicas", :cidade => "2310" , :uf => "MG", :cep => "30100201")
+Clinica.create( :id => 3, :medico_id => 3, :nome => "Clinica do Pedro", :telefone => "3199990003", 
+	:endereco => "Rua das Clinicas", :end_numero => '100', :end_complemento => "Sala 10", 
+	:bairro => "Bairro da Clinicas", :cidade => "2310" , :uf => "MG", :cep => "30100202")
+# Fim da criação das clinicas
+# Inicio da criação da Instituição
+Instituicao.delete_all
+Usuario.create(:id => 5, :email => "instituicao@instituicao.com", :email_confirmation => "instituicao@instituicao.com", 
+	:tipo => "I", :password => "123456", :password_confirmation => "123456")
+Instituicao.create(:id => 1 , :nome => "Instituição para todos" , :cnpj => "46.252.747/0001-38",
+	:responsavel => "José da instituição" ,:endereco => "Rua das instituições", :end_numero =>"50",
+	:complemento => "Lote 10", :bairro => "Bairro das instituições", :cidade => "2310",
+	:uf => "MG", :cep => "30200100", :telefone =>"3199991000", :status => "A", :usuario_id => 5)
+# Fim da criação da Instituição
