@@ -1,6 +1,6 @@
 class Medico < ActiveRecord::Base
 	
-	before_save :tratarcpf , on: :create
+	before_save :tratarcpf, on: :create
 
 	## Validação de campos do formulario
 	validates_presence_of :nome, :cpf, :crm, :crm_uf, :especialidade_id
@@ -19,7 +19,7 @@ class Medico < ActiveRecord::Base
 	accepts_nested_attributes_for :usuario
 
 	def tratarcpf
-			write_attribute(:cpf , self.to_s.delete!('.-'))
+		write_attribute(:cpf , self.cpf.to_s.delete!('.-'))
 	end
 
 end
