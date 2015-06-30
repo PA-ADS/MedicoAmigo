@@ -1,24 +1,25 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = Agenda -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+</div>
 
-<p>
-  <strong>Medico:</strong>
-  <%= @agenda.medico_id %>
-</p>
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:clinica_id) %>:</strong></dt>
+  <dd><%= @agenda.clinica.nome %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:data_emissao) %>:</strong></dt>
+  <dd><%= @agenda.data_emissao %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:quantidade) %>:</strong></dt>
+  <dd><%= @agenda.quantidade %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:saldo) %>:</strong></dt>
+  <dd><%= @agenda.saldo %></dd>
+</dl>
 
-<p>
-  <strong>Data emissao:</strong>
-  <%= @agenda.data_emissao %>
-</p>
-
-<p>
-  <strong>Quantidade:</strong>
-  <%= @agenda.quantidade %>
-</p>
-
-<p>
-  <strong>Saldo:</strong>
-  <%= @agenda.saldo %>
-</p>
-
-<%= link_to 'Edit', edit_agenda_path(@agenda) %> |
-<%= link_to 'Back', agendas_path %>
+<%= link_to t('.back', :default => t("helpers.links.back")),
+              agendas_path, :class => 'btn btn-default'  %>
+<%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_agenda_path(@agenda), :class => 'btn btn-default' %>
+<%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              agenda_path(@agenda),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>

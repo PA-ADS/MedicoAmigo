@@ -1,46 +1,38 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Listing Agendas</h1>
-
-<table>
+<%- model_class = Agenda -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>Clinica</th>
-      <th>Data emissao</th>
-      <th>Quantidade</th>
-      <th>Saldo</th>
-      <th colspan="3"></th>
+      <th><%= model_class.human_attribute_name(:clinica_id) %></th>
+      <th><%= model_class.human_attribute_name(:data_emissao) %></th>
+      <th><%= model_class.human_attribute_name(:quantidade) %></th>
+      <th><%= model_class.human_attribute_name(:saldo) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
-
   <tbody>
     <% @agendas.each do |agenda| %>
       <tr>
-        <td><%= agenda.clinica.nome %></td>
+        <td><%= link_to agenda.clinica.nome, agenda_path(agenda) %></td>
         <td><%= agenda.data_emissao %></td>
         <td><%= agenda.quantidade %></td>
         <td><%= agenda.saldo %></td>
-        <td><%= link_to 'Show', agenda %></td>
-        <td><%= link_to 'Edit', edit_agenda_path(agenda) %></td>
-        <td><%= link_to 'Destroy', agenda, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_agenda_path(agenda), :class => 'btn btn-default btn-xs' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      agenda_path(agenda),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-xs btn-danger' %>
+        </td>
       </tr>
     <% end %>
-    <!-- 
-      <tr>
-        <%= form_for(@agenda1 = Agenda.new) do |f| %>
-          <td><%= collection_select(:agenda, :clinica_id, Clinica.clinicas_medico(usuario_corrente.medico.id), :id, :nome, prompt: true) %></td>
-          <td><%= f.text_field :data_emissao %></td>
-          <td><%= f.number_field :quantidade %></td>
-          <td><%= f.number_field :saldo %></td>
-          <td><%= f.submit %></td>
-        <% end %>
-      </tr>
-    -->
   </tbody>
 </table>
 
-<br>
-<!--
-<%= button_tag('Adicionar', :type => 'button', :name => 'agenda_adicionar', :id => 'agenda_adicionar') %>
--->
-<%= link_to 'New Agenda', new_agenda_path %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_agenda_path,
+            :class => 'btn btn-primary' %>

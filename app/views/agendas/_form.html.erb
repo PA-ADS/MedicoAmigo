@@ -1,26 +1,38 @@
-<%= form_for(@agenda) do |f| %>
-  <% if @agenda.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@agenda.errors.count, "error") %> prohibited this agenda from being saved:</h2>
+<%= form_for @agenda, :html => { :class => "form-horizontal agenda" } do |f| %>
 
-      <ul>
-      <% @agenda.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+    <% if @agenda.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title">Verifique os <%= pluralize(@agenda.errors.count, "erro") %> abaixo</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @agenda.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :clinica_id %><br>
-    <%= collection_select(:agenda, :clinica_id, Clinica.clinicas_medico(usuario_corrente.medico.id), 
-      :id, :nome, prompt: true) %>
+  <div class="control-group">
+    <%= f.label :clinica_id, :class => 'control-label' %>
+    <div class="controls">
+      <%= collection_select(:agenda, :clinica_id, Clinica.clinicas_medico(usuario_corrente.medico.id),
+:id, :nome, {prompt: true}, {:class => 'form-control'}) %>
+    </div>
+    <%= error_span(@agenda[:clinica_id]) %>
   </div>
-  <div class="field">
-    <%= f.label :quantidade %><br>
-    <%= f.number_field :quantidade %>
+  <div class="control-group">
+    <%= f.label :quantidade, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :quantidade, :class => 'form-control', :placeholder => "Informe a quantidade consultas para doar" %>
+    </div>
+    <%= error_span(@agenda[:quantidade]) %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <br>
+  <%= f.submit nil, :class => 'btn btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+            agendas_path, :class => 'btn btn-default' %>
+
 <% end %>

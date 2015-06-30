@@ -1,28 +1,32 @@
-<h1>Lista agendas</h1>
-<table>
-	<thead>
-		<tr>
-			<th>Especialidade</th>
-			<th>Médico</th>
-			<th>Clinica</th>
-			<th>Cidade</th>
-			<th>Data emissao</th>
-			<th>Saldo</th>
-			<th></th>
-		</tr>
-	</thead>
-
-	<tbody>
-		<% @agendas.each do |agenda| %>
-			<tr>
-				<td><%= agenda.medico.especialidade.descricao %></td>
-				<td><%= agenda.medico.nome %></td>
-				<td><%= agenda.clinica.nome %></td>
-				<td><%= agenda.clinica.municipio.nome %></td>        
-				<td><%= agenda.data_emissao %></td>
-				<td><%= agenda.saldo %></td>
-				<td><%= link_to 'Solicitar', solicita_agenda_path(agenda) %></td>
-			</tr>
-		<% end %>
-	</tbody>
+<%- model_class = Agenda -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+    	<th><%= model_class.human_attribute_name(:especialidade) %></th>
+    	<th><%= model_class.human_attribute_name(:medico_id) %></th>
+    	<th><%= model_class.human_attribute_name(:clinica_id) %></th>
+    	<th><%= model_class.human_attribute_name(:cidade) %></th>
+    	<th><%= model_class.human_attribute_name(:data_emissao) %></th>
+    	<th><%= model_class.human_attribute_name(:saldo) %></th>
+   		<th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @agendas.each do |agenda| %>
+      <tr>
+        <td><%= agenda.medico.especialidade.descricao %></td>
+        <td><%= agenda.medico.nome %></td>
+        <td><%= agenda.clinica.nome %></td>
+        <td><%= agenda.clinica.municipio.nome %></td>
+        <td><%= agenda.data_emissao %></td>
+        <td><%= link_to agenda.saldo, solicita_agenda_path(agenda) %></td>
+        <td>
+          <%= link_to t('.solicitar', :default => t("helpers.links.solicitar")), solicita_agenda_path(agenda), :class => 'btn btn-default' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>

@@ -144,6 +144,7 @@ pt-BR:
       cancel: Cancelar
       back: Voltar
       confirm: "Confirma operação?"
+      solicitar: "Solicitar"
     actions: Ações
     titles:
       edit: "Editar %{model}"
@@ -223,6 +224,9 @@ pt-BR:
       clinica: 
         one: Clínica
         other: Clínicas
+      agenda:
+        one: Agenda
+        other: Agendas
     attributes:
       clinica:
         nome: Nome
@@ -234,3 +238,9 @@ pt-BR:
         cidade: Cidade
         uf: UF
         cep: CEP
+      agenda:
+        medico_id: Médico
+        clinica_id: Clínica Médico
+        data_emissao: Data Emissão
+        quantidade: Quantidade
+        saldo: Saldo
