@@ -137,6 +137,19 @@ pt-BR:
       create: Criar %{model}
       submit: Salvar %{model}
       update: Atualizar %{model}
+    links:
+      new: Novo
+      edit: Editar
+      destroy: Excluir
+      cancel: Cancelar
+      back: Voltar
+      confirm: "Confirma operação?"
+    actions: Ações
+    titles:
+      edit: "Editar %{model}"
+      save: "Save %{model}"
+      new: "Criar %{model}"
+      delete: "Excluir %{model}"
   number:
     currency:
       format:
@@ -205,3 +218,19 @@ pt-BR:
       long: "%d de %B de %Y, %H:%M"
       short: "%d de %B, %H:%M"
     pm: ''
+  activerecord:
+    models:
+      clinica: 
+        one: Clínica
+        other: Clínicas
+    attributes:
+      clinica:
+        nome: Nome
+        telefone: Telefone
+        endereco: Endereço
+        end_numero: Número
+        end_complemento: Complemento
+        bairro: Bairro
+        cidade: Cidade
+        uf: UF
+        cep: CEP
