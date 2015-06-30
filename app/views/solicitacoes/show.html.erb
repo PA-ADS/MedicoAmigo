@@ -1,53 +1,30 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = Solicitacao -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+</div>
 
-<p>
-  <strong>Instituicao:</strong>
-  <%= @solicitacao.instituicao_id %>
-</p>
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:instituicao_id) %>:</strong></dt>
+  <dd><%= @solicitacao.instituicao.nome %></dd>
+  <dt><strong><%= Medico.human_attribute_name(:nome) + " " + Medico.model_name.human %>:</strong></dt>
+  <dd><%= @solicitacao.agenda.medico.nome %></dd>
+  <dt><strong><%= Clinica.human_attribute_name(:nome) + " " + Clinica.model_name.human %>:</strong></dt>
+  <dd><%= @solicitacao.agenda.clinica.nome %></dd>
+  <dt><strong><%= Paciente.human_attribute_name(:nome) + " " + Paciente.model_name.human %>:</strong></dt>
+  <dd><%= @solicitacao.paciente.nome %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:solicitante) %>:</strong></dt>
+  <dd><%= @solicitacao.solicitante %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:data_emissao) %>:</strong></dt>
+  <dd><%= @solicitacao.data_emissao %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:data_agendamento) %>:</strong></dt>
+  <dd><%= @solicitacao.data_agendamento %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:hora_agendamento) %>:</strong></dt>
+  <dd><%= format_time(@solicitacao.hora_agendamento) %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:status) %>:</strong></dt>
+  <dd><%= situacao(@solicitacao.status) %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:descricao) %>:</strong></dt>
+  <dd><%= @solicitacao.descricao %></dd>
+</dl>
 
-<p>
-  <strong>Medico:</strong>
-  <%= @solicitacao.agenda.medico.nome %>
-</p>
-
-<p>
-  <strong>Clinica:</strong>
-  <%= @solicitacao.agenda.clinica.nome %>
-</p>
-
-<p>
-  <strong>Paciente:</strong>
-  <%= @solicitacao.paciente.nome %>
-</p>
-
-<p>
-  <strong>Solicitante:</strong>
-  <%= @solicitacao.solicitante %>
-</p>
-
-<p>
-  <strong>Data emissao:</strong>
-  <%= @solicitacao.data_emissao %>
-</p>
-
-<p>
-  <strong>Data agendamento:</strong>
-  <%= @solicitacao.data_agendamento %>
-</p>
-
-<p>
-  <strong>Hora agendamento:</strong>
-  <%= format_time(@solicitacao.hora_agendamento) %>
-</p>
-
-<p>
-  <strong>Status:</strong>
-  <%= @solicitacao.status %>
-</p>
-
-<p>
-  <strong>Descricao:</strong>
-  <%= @solicitacao.descricao %>
-</p>
-
-<%= link_to 'Back', solicitacoes_path %>
+<%= link_to t('.back', :default => t("helpers.links.back")),
+              solicitacoes_path, :class => 'btn btn-default'  %>

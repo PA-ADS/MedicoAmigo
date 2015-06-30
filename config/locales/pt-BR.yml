@@ -145,12 +145,15 @@ pt-BR:
       back: Voltar
       confirm: "Confirma operação?"
       solicitar: "Solicitar"
+      details: "Detalhes"
+      aprovacao: "Aprovar/Rejeitar"
     actions: Ações
     titles:
       edit: "Editar %{model}"
       save: "Save %{model}"
       new: "Criar %{model}"
       delete: "Excluir %{model}"
+      aprovacao: "Aprovação consulta"
   number:
     currency:
       format:
@@ -227,6 +230,12 @@ pt-BR:
       agenda:
         one: Agenda
         other: Agendas
+      solicitacao:
+        one: Solicitação
+        other: Solicitações
+      medico:
+        one: Médico
+        other: Médicos
     attributes:
       clinica:
         nome: Nome
@@ -244,3 +253,13 @@ pt-BR:
         data_emissao: Data Emissão
         quantidade: Quantidade
         saldo: Saldo
+      solicitacao:
+        instituicao_id: Instituição
+        paciente_id: Paciente
+        agenda_id: Agenda Médico
+        solicitante: Solicitante
+        data_emissao: Data Emissão
+        data_agendamento: Data Agendamento
+        hora_agendamento: Hora Agendamento
+        status: Situação
+        descricao: Observação Solicitação

@@ -1,40 +1,60 @@
-<h1>Aprovação solicitação de consulta</h1>
-<%= form_for(@solicitacao) do |f| %>
-  <% if @solicitacao.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@solicitacao.errors.count, "error") %> prohibited this solicitacao from being saved:</h2>
+<%- model_class = Solicitacao -%>
 
-      <ul>
-      <% @solicitacao.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+<div class="page-header">
+  <h1><%=t '.title', :default => [:'helpers.titles.aprovacao', 'Edit %{model}'], :model => model_class.model_name.human.titleize %></h1>
+</div>
+
+<%= form_for @solicitacao, :html => { :class => "form-horizontal solicitacao" } do |f| %>
+  <% if @solicitacao.errors.any? %>
+    <div id="error_explanation" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3>Verifique <%= pluralize(@solicitacao.errors.count, "erro") %> abaixo</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+          <% @solicitacao.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
     </div>
   <% end %>
 
-  <div>
-  	<ul>
-  		<li>Instituição: <%= @solicitacao.instituicao.nome %></li>
-  		<li>Paciente: <%= @solicitacao.paciente.nome %></li>
-  		<li>Descrição: <%= @solicitacao.descricao %></li>
-  	</ul>
-  </div>
+  <dl class="dl-horizontal">
+ 		<dt><strong><%= model_class.human_attribute_name(:instituicao_id) %>:</strong></dt>
+    <dd><%= @solicitacao.instituicao.nome %></dd>
+ 		<dt><strong><%= Paciente.human_attribute_name(:nome) + " " + Paciente.model_name.human %>:</strong></dt>
+    <dd><%= @solicitacao.paciente.nome %></dd>
+    <dt><strong><%= model_class.human_attribute_name(:descricao) %>:</strong></dt>
+    <dd><%= @solicitacao.descricao %></dd>
+  </dl>
 
-  <div class="field">
-    <%= f.label :data_agendamento %><br>
-    <%= f.date_select :data_agendamento, {:prompt => true} %>
+  <div class="control-group">
+    <%= f.label :data_agendamento, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.date_select :data_agendamento, {:prompt => true}, :class => 'form-control' %>
+    </div>
+    <%= error_span(@solicitacao[:data_agendamento]) %>
   </div>
-  <div class="field">
-    <%= f.label :hora_agendamento %><br>
-    <%= f.time_select :hora_agendamento, {:prompt => true} %>
+  <div class="control-group">
+    <%= f.label :hora_agendamento, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.time_select :hora_agendamento, {:prompt => true}, :class => 'form-control' %>
+    </div>
+    <%= error_span(@solicitacao[:hora_agendamento]) %>
   </div>
-  <div class="field">
-  	Aprovar<br>
-    <%= f.radio_button :status, "AP" %> Sim
-    <%= f.radio_button :status, "RJ", {:checked => true} %> Não
+  <div class="control-group">
+    <%= f.label :status, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.radio_button :status, "AP", {:class => 'radio-inline'} %><%= situacao("AP")%>
+      <%= f.radio_button :status, "RJ", {:checked => true, :class => 'radio-inline'} %><%= situacao("RJ")%>
+    </div>
+    <%= error_span(@solicitacao[:hora_agendamento]) %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <br>
+
+  <%= f.submit nil, :class => 'btn btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+            solicitacoes_path, :class => 'btn btn-default' %>
 
 <% end %>

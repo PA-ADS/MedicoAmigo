@@ -1,39 +1,62 @@
-<%= form_for(@solicitacao) do |f| %>
-  <% if @solicitacao.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@solicitacao.errors.count, "error") %> prohibited this solicitacao from being saved:</h2>
+<%= form_for @solicitacao, :html => { :class => "form-horizontal solicitacao" } do |f| %>
 
-      <ul>
-      <% @solicitacao.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+    <% if @solicitacao.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title">Verifique <%= pluralize(@solicitacao.errors.count, "erro") %> abaixo</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @solicitacao.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.hidden_field :instituicao_id %>
+  <div class="control-group">
+    <div class="controls">
+      <%= f.hidden_field :instituicao_id, :class => 'form-control' %>
+    </div>
+    <%= error_span(@solicitacao[:instituicao_id]) %>
   </div>
-  <div class="field">
-    <%= f.hidden_field :agenda_id %>
+  <div class="control-group">
+    <div class="controls">
+      <%= f.hidden_field :agenda_id, :class => 'form-control' %>
+    </div>
+    <%= error_span(@solicitacao[:agenda_id]) %>
   </div>
-  <div class="field">
-    <%= f.hidden_field :data_emissao %>
+  <div class="control-group">
+    <div class="controls">
+      <%= f.hidden_field :data_emissao, :class => 'form-control' %>
+    </div>
+    <%= error_span(@solicitacao[:data_emissao]) %>
   </div>
-  <div class="field">
-    <%= f.label :paciente_id %><br>
-    <%= collection_select(:solicitacao, :paciente_id, Paciente.all, 
-      :id, :nome, prompt: true) %>
+  <div class="control-group">
+    <%= f.label :paciente_id, :class => 'control-label' %>
+    <div class="controls">
+      <%= collection_select(:solicitacao, :paciente_id, Paciente.all,:id, :nome, {prompt: true}, {:class => 'form-control'}) %>
+    </div>
+    <%= error_span(@solicitacao[:paciente_id]) %>
   </div>
-  <div class="field">
-    <%= f.label :solicitante %><br>
-    <%= f.text_field :solicitante %>
+  <div class="control-group">
+    <%= f.label :solicitante, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :solicitante, :class => 'form-control' %>
+    </div>
+    <%= error_span(@solicitacao[:solicitante]) %>
   </div>
-  <div class="field">
-    <%= f.label :descricao %><br>
-    <%= f.text_area :descricao %>
+  <div class="control-group">
+    <%= f.label :descricao, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_area :descricao, :class => 'form-control' %>
+    </div>
+    <%= error_span(@solicitacao[:descricao]) %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <br>
+  <%= f.submit nil, :class => 'btn btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+            solicitacoes_path, :class => 'btn btn-default' %>
+
 <% end %>
