@@ -1,14 +1,23 @@
-<h1>Log in</h1>
+<div class="page-header">
+  <h1><%=t '.title', :default => "Entrar" %></h1>
+</div>
+<%= form_tag sessions_path, :html => { :class => "form-horizontal usuario" } do %>
 
-<%= form_tag sessions_path do %>
-  <p>
-    <%= label_tag :email %><br />
-    <%= text_field_tag :email, params[:email] %>
-  </p>
-  <p>
-    <%= label_tag :password %><br />
-    <%= password_field_tag :password %>
-  </p>
-  <p class="button"><%= submit_tag "Log in" %></p>
+  <div class="control-group">
+    <%= label_tag :email, nil,{:class => 'control-label'} %>
+    <div class="controls">
+      <%= text_field_tag :email, nil, {:class => 'form-control', :placeholder => "Informe seu e-mail"} %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= label_tag :password, nil,{:class => 'control-label'} %>
+    <div class="controls">
+      <%= password_field_tag :password, nil, {:class => 'form-control', :placeholder => "Informe sua senha"} %>
+    </div>
+  </div>
+  <br>
+  <%= submit_tag "Entrar", :class => 'btn btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+            root_path, :class => 'btn btn-default' %>
+
 <% end %>
-
