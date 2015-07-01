@@ -236,6 +236,9 @@ pt-BR:
       medico:
         one: Médico
         other: Médicos
+      paciente:
+        one: Paciente
+        other: Pacientes
     attributes:
       clinica:
         nome: Nome
@@ -263,3 +266,14 @@ pt-BR:
         hora_agendamento: Hora Agendamento
         status: Situação
         descricao: Observação Solicitação
+      paciente:
+        nome: Nome
+        cpf: CPF
+        endereco: Endereço
+        end_numero: Número
+        complemento: Complemento
+        bairro: Bairro
+        uf: UF
+        cidade: Cidade
+        cep: CEP
+        telefone: Telefone

@@ -1,59 +1,94 @@
-<%= form_for(@paciente) do |f| %>
-  <% if @paciente.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@paciente.errors.count, "error") %> prohibited this paciente from being saved:</h2>
+<%= form_for @paciente, :html => { :class => "form-horizontal paciente" } do |f| %>
 
-      <ul>
-      <% @paciente.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+    <% if @paciente.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title">Verifique os <%= pluralize(@paciente.errors.count, "erro") %> abaixo</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @paciente.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :nome %><br>
-    <%= f.text_field :nome %>
+  <div class="control-group">
+    <%= f.label :nome, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :nome, :class => 'form-control', :placeholder => "Informe nome e sobrenome" %>
+    </div>
+    <%= error_span(@paciente[:nome]) %>
   </div>
-  <div class="field">
-    <%= f.label :cpf %><br>
-    <%= f.text_field :cpf %>
+  <div class="control-group">
+    <%= f.label :cpf, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :cpf, :class => 'form-control', :placeholder => "Informe o CPF" %>
+    </div>
+    <%= error_span(@paciente[:cpf]) %>
   </div>
-  <div class="field">
-    <%= f.label :endereco %><br>
-    <%= f.text_field :endereco %>
+  <div class="control-group">
+    <%= f.label :endereco, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :endereco, :class => 'form-control', :placeholder => "Informe endereço Ex. Avenida Afonso Pena" %>
+    </div>
+    <%= error_span(@paciente[:endereco]) %>
   </div>
-  <div class="field">
-    <%= f.label :end_numero %><br>
-    <%= f.text_field :end_numero %>
+  <div class="control-group">
+    <%= f.label :end_numero, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :end_numero, :class => 'form-control', :placeholder => "Informe o número" %>
+    </div>
+    <%= error_span(@paciente[:end_numero]) %>
   </div>
-  <div class="field">
-    <%= f.label :complemento %><br>
-    <%= f.text_field :complemento %>
+  <div class="control-group">
+    <%= f.label :complemento, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :complemento, :class => 'form-control', :placeholder => "Apartamento, Bloco, Conjunto ou Casa" %>
+    </div>
+    <%= error_span(@paciente[:complemento]) %>
   </div>
-  <div class="field">
-    <%= f.label :bairro %><br>
-    <%= f.text_field :bairro %>
+  <div class="control-group">
+    <%= f.label :bairro, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :bairro, :class => 'form-control', :placeholder => "Informe o bairro" %>
+    </div>
+    <%= error_span(@paciente[:bairro]) %>
   </div>
-  <div class="field">
-    <%= f.label :uf %><br>
-    <%= collection_select(:paciente, :uf, Estado.all, :uf, :nome, 
-      {prompt: true}, {:id => "uf_ajax"}) %>
+  <div class="control-group">
+    <%= f.label :uf, :class => 'control-label' %>
+    <div class="controls">
+      <%= collection_select(:paciente, :uf, Estado.all, :uf, :nome,{prompt: true}, {:id => "uf_ajax", :class => 'form-control'}) %>
+    </div>
+    <%= error_span(@paciente[:uf]) %>
   </div>
-  <div class="field">
-    <%= f.label :cidade %><br>
-    <%= collection_select(:paciente, :cidade, Municipio.where(:uf => @paciente.uf), :id, :nome, 
-      {prompt: true}, {:id => "cidade_ajax"}) %>
+  <div class="control-group">
+    <%= f.label :cidade, :class => 'control-label' %>
+    <div class="controls">
+      <%= collection_select(:paciente, :cidade, Municipio.where(:uf => @paciente.uf), :id, :nome,{prompt: true}, {:id => "cidade_ajax", :class => 'form-control'}) %>
+    </div>
+    <%= error_span(@paciente[:cidade]) %>
   </div>
-  <div class="field">
-    <%= f.label :cep %><br>
-    <%= f.text_field :cep %>
+  <div class="control-group">
+    <%= f.label :cep, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :cep, :class => 'form-control', :placeholder => "Informe CEP Ex. 30130-009" %>
+    </div>
+    <%= error_span(@paciente[:cep]) %>
   </div>
-  <div class="field">
-    <%= f.label :telefone %><br>
-    <%= f.text_field :telefone %>
+  <div class="control-group">
+    <%= f.label :telefone, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :telefone, :class => 'form-control', :placeholder => "Informe telefone (31)3254-7856" %>
+    </div>
+    <%= error_span(@paciente[:telefone]) %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <br>
+
+  <%= f.submit nil, :class => 'btn btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+            pacientes_path, :class => 'btn btn-default' %>
+
 <% end %>
