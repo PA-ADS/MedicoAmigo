@@ -277,3 +277,10 @@ pt-BR:
         cidade: Cidade
         cep: CEP
         telefone: Telefone
+  unauthorized:
+    manage:
+      all: "Não é autorizado o acesso ao %{action} %{subject}."
+      user: "Not allowed to manage other user accounts."
+      agenda: "Não é permitida a edição de agenda já utilizada"
+    update:
+      project: "Not allowed to update this project."
