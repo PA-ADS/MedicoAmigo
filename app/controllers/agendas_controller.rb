@@ -8,7 +8,7 @@ class AgendasController < ApplicationController
   # GET /agendas
   # GET /agendas.json
   def index
-    @agendas = Agenda.accessible_by(current_ability)
+    @agendas = Agenda.where(:medico_id => usuario_corrente.medico.id)
   end
 
   # GET /agendas/1

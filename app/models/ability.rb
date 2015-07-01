@@ -5,7 +5,11 @@ class Ability
     user ||= Usuario.new # guest user (not logged in)
     if user.tipo == "M"
         can :manage, Medico, :id => user.medico.id
-        can :manage, [Clinica, Agenda], :medico_id => user.medico.id
+        can :manage, Clinica, :medico_id => user.medico.id
+        can [:new, :create, :read], Agenda, :medico_id => user.medico.id
+        can :manage, Agenda do |agenda|
+            agenda.quantidade == agenda.saldo && agenda.medico_id == user.medico.id
+        end
         can [:read, :aprovar, :update], Solicitacao, :agenda => {:medico_id => user.medico.id}
     elsif user.tipo == "I"
         can :update, Instituicao, :id => user.instituicao.id
