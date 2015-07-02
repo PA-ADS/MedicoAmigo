@@ -239,6 +239,9 @@ pt-BR:
       paciente:
         one: Paciente
         other: Pacientes
+      instituicao:
+        one: Instituição
+        other: Instituições
     attributes:
       clinica:
         nome: Nome
@@ -277,6 +280,20 @@ pt-BR:
         cidade: Cidade
         cep: CEP
         telefone: Telefone
+      instituicao:
+        nome: Nome
+        cnpj: CNPJ
+        responsavel: Responsável
+        endereco: Endereço
+        end_numero: Número
+        complemento: Complemento
+        bairro: Bairro
+        cidade: Cidade
+        uf: UF
+        cep: CEP
+        telefone: Telefone
+        status: Situação
+        usuario_id: Usuário
   unauthorized:
     manage:
       all: "Não é autorizado o acesso ao %{action} %{subject}."

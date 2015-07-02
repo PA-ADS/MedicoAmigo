@@ -1,51 +1,54 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Listing Instituicoes</h1>
-
-<table>
+<%- model_class = Instituicao -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+</div>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>Nome</th>
-      <th>Cnpj</th>
-      <th>Responsavel</th>
-      <th>Endereco</th>
-      <th>End numero</th>
-      <th>Complemento</th>
-      <th>Bairro</th>
-      <th>Cidade</th>
-      <th>Uf</th>
-      <th>Cep</th>
-      <th>Telefone</th>
-      <th>Status</th>
-      <th>Usuario</th>
-      <th colspan="3"></th>
+      <th><%= model_class.human_attribute_name(:nome) %></th>
+      <th><%= model_class.human_attribute_name(:cnpj) %></th>
+      <th><%= model_class.human_attribute_name(:responsavel) %></th>
+      <th><%= model_class.human_attribute_name(:endereco) %></th>
+      <th><%= model_class.human_attribute_name(:end_numero) %></th>
+      <th><%= model_class.human_attribute_name(:complemento) %></th>
+      <th><%= model_class.human_attribute_name(:bairro) %></th>
+      <th><%= model_class.human_attribute_name(:cidade) %></th>
+      <th><%= model_class.human_attribute_name(:uf) %></th>
+      <th><%= model_class.human_attribute_name(:cep) %></th>
+      <th><%= model_class.human_attribute_name(:telefone) %></th>
+      <th><%= model_class.human_attribute_name(:status) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
-
   <tbody>
     <% @instituicoes.each do |instituicao| %>
       <tr>
-        <td><%= instituicao.nome %></td>
+        <td><%= link_to instituicao.nome, instituicao_path(instituicao) %></td>
         <td><%= instituicao.cnpj %></td>
         <td><%= instituicao.responsavel %></td>
         <td><%= instituicao.endereco %></td>
         <td><%= instituicao.end_numero %></td>
         <td><%= instituicao.complemento %></td>
         <td><%= instituicao.bairro %></td>
-        <td><%= instituicao.cidade %></td>
+        <td><%= instituicao.municipio.nome %></td>
         <td><%= instituicao.uf %></td>
         <td><%= instituicao.cep %></td>
         <td><%= instituicao.telefone %></td>
-        <td><%= instituicao.status %></td>
-        <td><%= instituicao.usuario_id %></td>
-        <td><%= link_to 'Show', instituicao %></td>
-        <td><%= link_to 'Edit', edit_instituicao_path(instituicao) %></td>
-        <td><%= link_to 'Destroy', instituicao, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= situacaoInstituicao(instituicao.status) %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_instituicao_path(instituicao), :class => 'btn btn-default btn-xs' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      instituicao_path(instituicao),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-xs btn-danger' %>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Instituicao', new_instituicao_path %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_instituicao_path,
+            :class => 'btn btn-primary' %>

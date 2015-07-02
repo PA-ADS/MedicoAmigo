@@ -1,83 +1,141 @@
-<%= form_for(@instituicao) do |f| %>
-  <% if @instituicao.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@instituicao.errors.count, "error") %> prohibited this instituicao from being saved:</h2>
+<%= form_for @instituicao, :html => { :class => "form-horizontal instituicao" } do |f| %>
 
-      <ul>
-      <% @instituicao.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+    <% if @instituicao.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@instituicao.errors.count, "error") %> prohibited this instituicao from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @instituicao.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :nome %><br>
-    <%= f.text_field :nome %>
+  <div class="control-group">
+    <%= f.label :nome, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :nome, :class => 'form-control', :placeholder => "Informe a razão social da instituição" %>
+    </div>
+    <%= error_span(@instituicao[:nome]) %>
   </div>
-  <div class="field">
-    <%= f.label :cnpj %><br>
-    <%= f.text_field :cnpj %>
+  <div class="control-group">
+    <%= f.label :cnpj, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :cnpj, :class => 'form-control', :placeholder => "Informe o CNPJ" %>
+    </div>
+    <%= error_span(@instituicao[:cnpj]) %>
   </div>
-  <div class="field">
-    <%= f.label :responsavel %><br>
-    <%= f.text_field :responsavel %>
+  <div class="control-group">
+    <%= f.label :responsavel, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :responsavel, :class => 'form-control', :placeholder => "Informe o responsável pela instituição" %>
+    </div>
+    <%= error_span(@instituicao[:responsavel]) %>
   </div>
-  <div class="field">
-    <%= f.label :endereco %><br>
-    <%= f.text_field :endereco %>
+  <div class="control-group">
+    <%= f.label :endereco, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :endereco, :class => 'form-control', :placeholder => "Informe endereço Ex. Avenida Afonso Pena" %>
+    </div>
+    <%= error_span(@instituicao[:endereco]) %>
   </div>
-  <div class="field">
-    <%= f.label :end_numero %><br>
-    <%= f.text_field :end_numero %>
+  <div class="control-group">
+    <%= f.label :end_numero, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :end_numero, :class => 'form-control', :placeholder => "Informe o número" %>
+    </div>
+    <%= error_span(@instituicao[:end_numero]) %>
   </div>
-  <div class="field">
-    <%= f.label :complemento %><br>
-    <%= f.text_field :complemento %>
+  <div class="control-group">
+    <%= f.label :complemento, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :complemento, :class => 'form-control', :placeholder => "Apartamento, Bloco, Conjunto ou Casa" %>
+    </div>
+    <%= error_span(@instituicao[:complemento]) %>
   </div>
-  <div class="field">
-    <%= f.label :bairro %><br>
-    <%= f.text_field :bairro %>
+  <div class="control-group">
+    <%= f.label :bairro, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :bairro, :class => 'form-control', :placeholder => "Informe o bairro" %>
+    </div>
+    <%= error_span(@instituicao[:bairro]) %>
   </div>
-   <div class="field">
-    <%= f.label :uf %><br>
-    <%= collection_select(:instituicao, :uf, Estado.all, :uf, :nome, 
-      {prompt: true}, {:id => "uf_ajax"}) %>
+  <div class="control-group">
+    <%= f.label :uf, :class => 'control-label' %>
+    <div class="controls">
+      <%= collection_select(:instituicao, :uf, Estado.all, :uf, :nome, {prompt: true}, {:id => "uf_ajax", :class => 'form-control'}) %>
+    </div>
+    <%= error_span(@instituicao[:uf]) %>
   </div>
-  <div class="field">
-    <%= f.label :cidade %><br>
-    <%= collection_select(:instituicao, :cidade, Municipio.where(:uf => @instituicao.uf), :id, :nome, 
-      {prompt: true}, {:id => "cidade_ajax"}) %>
+  <div class="control-group">
+    <%= f.label :cidade, :class => 'control-label' %>
+    <div class="controls">
+      <%= collection_select(:instituicao, :cidade, Municipio.where(:uf => @instituicao.uf), :id, :nome,
+{prompt: true}, {:id => "cidade_ajax", :class => 'form-control'}) %>
+    </div>
+    <%= error_span(@instituicao[:cidade]) %>
   </div>
-  <div class="field">
-    <%= f.label :cep %><br>
-    <%= f.text_field :cep %>
+  <div class="control-group">
+    <%= f.label :cep, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :cep, :class => 'form-control', :placeholder => "Informe CEP Ex. 30130-009" %>
+    </div>
+    <%= error_span(@instituicao[:cep]) %>
   </div>
-  <div class="field">
-    <%= f.label :telefone %><br>
-    <%= f.text_field :telefone %>
+  <div class="control-group">
+    <%= f.label :telefone, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :telefone, :class => 'form-control', :placeholder => "Informe telefone (31)3254-7856" %>
+    </div>
+    <%= error_span(@instituicao[:telefone]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label :status, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.radio_button :status, "A", {:checked => true, :class => 'radio-inline'} %><%= situacaoInstituicao("A")%>
+      <%= f.radio_button :status, "B", {:class => 'radio-inline'} %><%= situacaoInstituicao("B")%>
+    </div>
+    <%= error_span(@instituicao[:status]) %>
   </div>
   <% if @instituicao.new_record? %>
-  <%= f.fields_for :usuario do |usuario_form| %>
-    <div class="field">
-      <%= usuario_form.label :email %><br>
-      <%= usuario_form.text_field :email %>
-    </div>
-    <div class="field">
-      <%= usuario_form.label :email_confirmation %><br>
-      <%= usuario_form.text_field :email_confirmation %>
-    </div>
-    <div class="field">
-      <%= usuario_form.label :password %><br>
-      <%= usuario_form.password_field :password %>
-    </div>
-    <div class="field">
-      <%= usuario_form.label :password_confirmation %><br>
-      <%= usuario_form.password_field :password_confirmation %>
-    </div>
+    <%= f.fields_for :usuario do |usuario_form| %>
+      <div class="control-group">
+        <%= usuario_form.label :email, "E-mail", :class => 'control-label' %>
+        <div class="controls">
+          <%= usuario_form.text_field :email, :class => 'form-control', :placeholder => "Informe um e-mail" %>
+        </div>
+      <%= error_span(@instituicao[:email]) %>
+      </div>
+      <div class="control-group">
+        <%= usuario_form.label :email_confirmation, "Confirme seu e-mail", :class => 'control-label' %>
+        <div class="controls">
+          <%= usuario_form.text_field :email_confirmation, :class => 'form-control', :placeholder => "Insira novamente o e-mail" %>
+        </div>
+      <%= error_span(@instituicao[:email_confirmation]) %>
+      </div>
+      <div class="control-group">
+        <%= usuario_form.label :password, "Informe uma senha", :class => 'control-label' %>
+        <div class="controls">
+          <%= usuario_form.password_field :password, :class => 'form-control', :placeholder => "Informe uma senha" %>
+        </div>
+      <%= error_span(@instituicao[:password]) %>
+      </div>
+      <div class="control-group">
+        <%= usuario_form.label :password_confirmation, "Confirme sua senha", :class => 'control-label' %>
+        <div class="controls">
+          <%= usuario_form.password_field :password_confirmation, :class => 'form-control', :placeholder => "Confirme a senha informada anteriormente" %>
+        </div>
+      <%= error_span(@instituicao[:password_confirmation]) %>
+      </div>
+    <% end %>
   <% end %>
-  <% end %>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <br>
+  <%= f.submit nil, :class => 'btn btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+            instituicoes_path, :class => 'btn btn-default' %>
+
 <% end %>
