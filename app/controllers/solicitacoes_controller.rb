@@ -41,7 +41,7 @@ class SolicitacoesController < ApplicationController
       begin 
         @agenda.baixar_agenda
         if @solicitacao.save
-          format.html { redirect_to @solicitacao, notice: 'Solicitacao was successfully created.' }
+          format.html { redirect_to @solicitacao, notice: 'Solicitacão criada com sucesso!' }
           format.json { render :show, status: :created, location: @solicitacao }
         else
           @agenda.estornar_baixa
@@ -59,7 +59,7 @@ class SolicitacoesController < ApplicationController
   def update
     respond_to do |format|
       if @solicitacao.update(update_params)
-        format.html { redirect_to @solicitacao, notice: 'Solicitacao was successfully updated.' }
+        format.html { redirect_to @solicitacao, notice: 'Solicitacao atualizada com sucesso!' }
         format.json { render :show, status: :ok, location: @solicitacao }
       else
         format.html { render :edit }
@@ -73,7 +73,7 @@ class SolicitacoesController < ApplicationController
   def destroy
     @solicitacao.destroy
     respond_to do |format|
-      format.html { redirect_to solicitacoes_url, notice: 'Solicitacao was successfully destroyed.' }
+      format.html { redirect_to solicitacoes_url, notice: 'Solicitacao excluida com sucesso!' }
       format.json { head :no_content }
     end
   end

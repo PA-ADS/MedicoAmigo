@@ -32,7 +32,7 @@ class EspecialidadesController < ApplicationController
 
     respond_to do |format|
       if @especialidade.save
-        format.html { redirect_to @especialidade, notice: 'Especialidade was successfully created.' }
+        format.html { redirect_to @especialidade, notice: 'Especialidade criado com sucesso!' }
         format.json { render :show, status: :created, location: @especialidade }
       else
         format.html { render :new }
@@ -46,7 +46,7 @@ class EspecialidadesController < ApplicationController
   def update
     respond_to do |format|
       if @especialidade.update(especialidade_params)
-        format.html { redirect_to @especialidade, notice: 'Especialidade was successfully updated.' }
+        format.html { redirect_to @especialidade, notice: 'Especialidade atualizado com sucesso!' }
         format.json { render :show, status: :ok, location: @especialidade }
       else
         format.html { render :edit }
@@ -60,7 +60,7 @@ class EspecialidadesController < ApplicationController
   def destroy
     @especialidade.destroy
     respond_to do |format|
-      format.html { redirect_to especialidades_url, notice: 'Especialidade was successfully destroyed.' }
+      format.html { redirect_to especialidades_url, notice: 'Especialidade excluída com sucesso!' }
       format.json { head :no_content }
     end
   end
