@@ -10,16 +10,16 @@ class SessionsController < ApplicationController
 		usuario = Usuario.autenticar(params[:email], params[:password])
 		if usuario
 			session[:usuario_id] = usuario.id
-			redirect_to root_url, :notice => "Logged in!"
+			redirect_to root_url, :notice => "Você entrou!"
 		else
-			flash.now.alert = "Invalid email or password"
+			flash.now.alert = "E-mail ou senha invalida!"
 			render "new"
 		end
 	end
 
 	def destroy
 		session[:usuario_id] = nil
-		redirect_to root_url, :notice => "Logged out!"
+		redirect_to root_url, :notice => "Você saiu!"
 	end
 
 end
